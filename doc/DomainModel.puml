@@ -1,0 +1,51 @@
+@startuml
+'https://plantuml.com/class-diagram
+!pragma layout smetana
+
+
+class User {
+id;
+username;
+password;
+balance;
+email;
+employee;
+admin;
+}
+
+class Order{
+user;
+List <OrderLine> order;
+totalPrice;
+invoiceId;
+date;
+}
+
+class ShoppingCart{
+List <OrderLine> order;
+}
+
+class OrderLine{
+Top top;
+Bottom bottom;
+quantity;
+}
+
+
+class Top{
+flavour;
+price;
+}
+
+class Bottom{
+flavour;
+price;
+}
+
+Bottom --- OrderLine
+Top --- OrderLine
+User --- Order
+Order --- OrderLine
+ShoppingCart --- User
+
+@enduml
