@@ -30,32 +30,41 @@
     <h2>Bestil dine cupcakes</h2>
     <div class="dropdown-container">
         <div class="dropdown">
-            <label for="topping">Vælg topping</label>
-            <select id="topping">
-                <option value="chocolate">Chocolate</option>
-                <!-- More options -->
+            <select name="top">
+                <option>Vælg en topping</option>
+                <option th:each="category: ${session.categoryMap.values}"
+                        th:value="${category.categoryId}"
+                        th:text="${category.name +' (' + category.categoryId + ')'}"
+                        value="1">Name
+                </option>
             </select>
         </div>
         <div class="dropdown">
-            <label for="base">Vælg bund</label>
-            <select id="base">
-                <option value="vanilla">Vanilla</option>
-                <option value="chocolate">Chocolate</option>
-                <!-- More options -->
+            <select name="bottom">
+                <option>Vælg en bund</option>
+                <option th:each="category: ${session.categoryMap.values}"
+                        th:value="${category.categoryId}"
+                        th:text="${category.name +' (' + category.categoryId + ')'}"
+                        value="1">Name
+                </option>
             </select>
         </div>
     </div>
     <div class="dropdown-container">
         <div class="dropdown">
-            <label for="quantity">Vælg antal</label>
-            <select id="quantity">
-                <option value="1">1</option>
-                <!-- More options -->
-            </select>
+            <input placeholder="Indtast prisen på varen" type="number" name="price" min="0" max="100000"/>
         </div>
+        <div class="dropdown">
         <button type="submit">Læg i kurv</button>
+        </div>
     </div>
 </div>
+
+
+
+
+
+
 
 
 

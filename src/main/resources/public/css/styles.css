@@ -97,8 +97,20 @@ select {
     cursor: pointer;
 }
 
+input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 25px;
+    border: 1px solid #CCC;
+    cursor: pointer;
+}
+
+input{
+    width: 89%;
+}
+
 button {
-    width: 48%;
+    width: 100%;
     padding: 15px;
     border-radius: 25px;
     border: none;
