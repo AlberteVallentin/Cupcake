@@ -24,7 +24,7 @@ ul {
 
 nav {
     padding: 0 70px;
-    background: #010101;
+    background: #5A5FD0;
     justify-content: space-between;
     position: sticky;
     top: 0;
@@ -33,12 +33,14 @@ nav {
 nav .logo,
 nav ul {
     list-style: none;
+    display: flex;
 }
 
 nav .logo {
     color: white;
     font-size: 30px;
     font-weight: bolder;
+    width: 4rem;
 }
 
 nav li {
