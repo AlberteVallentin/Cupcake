@@ -17,7 +17,6 @@ class Order{
 User user;
 List <OrderLine> order;
 int totalPrice;
-int invoiceId;
 String date;
 }
 
