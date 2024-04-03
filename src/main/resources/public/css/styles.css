@@ -55,3 +55,28 @@ nav li a {
     position: relative;
     text-decoration: none;
 }
+
+/*********** Table ordrer**************/
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-ordre table {
+    width: 800px;
+    border-collapse: collapse;
+    border: 1px solid silver;
+}
+
+.container-ordre td {
+    text-align: center;
+}
+
+.totalprice {
+    border-top: 1px solid black;
+}
+
+
+

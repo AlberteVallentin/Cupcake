@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
 <header>
- <img alt="banner" src="../public/images/Banner.png">
+    <img alt="banner" src="../public/images/Banner.png">
 </header>
 
 <nav>
@@ -20,4 +20,38 @@
         <li><a href="#">Login/Opret</a></li>
         <li><a href="#">Kurv</a></li>
     </ul>
+
 </nav>
+<body>
+<div class="container">
+    <h2>Dine Ordrer</h2>
+    <div class="container-ordre">
+        <table>
+            <tr>
+                <th>Antal</th>
+                <th>Bund</th>
+                <th>Topping</th>
+                <th>Pris</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Chocolate</td>
+                <td>Chocolate</td>
+                <td>12.00</td>
+                <td>Delete</td>
+
+            </tr>
+            <tr class="totalprice">
+                <td>Total pris</td>
+                <td></td>
+                <td></td>
+                <td>68 kr</td>
+            </tr>
+
+        </table>
+
+
+    </div>
+</div>
+</body>
