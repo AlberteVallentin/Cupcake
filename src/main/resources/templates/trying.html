@@ -1,31 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-
-<title>Frontpage</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bestil dine cupcakes</title>
+    <link href="../public/css/trying.css" th:href="@{/css/trying.css}" rel="stylesheet"/>
+</head>
 <body>
-<header>
-    <a href="index.html" th:href="@{/}">
-        <img src="../public/images/banner.png" th:src="@{/images/banner.png}"/>
-    </a>
-</header>
-
-<nav>
-    <a href="index.html" th:href="@{/}">
-        <img class ="logo" src="../public/images/logo.png" th:src="@{/images/logo.png}"/>
-    </a>
-    <ul>
-        <li><a href="#">Hjem</a></li>
-        <li><a href="#">Login/Opret</a></li>
-        <li><a href="#">Kurv</a></li>
-    </ul>
-</nav>
-
-<h1>Velkommen til OLSKER CUPCAKES </h1>
-
 <div class="order-container">
     <h2>Bestil dine cupcakes</h2>
     <div class="dropdown-container">
@@ -40,7 +21,6 @@
             <label for="base">Vælg bund</label>
             <select id="base">
                 <option value="vanilla">Vanilla</option>
-                <option value="chocolate">Chocolate</option>
                 <!-- More options -->
             </select>
         </div>
@@ -53,11 +33,8 @@
                 <!-- More options -->
             </select>
         </div>
-        <button type="submit">Læg i kurv</button>
+        <button type="button" name="taskId" th:value="${task.taskId}" formaction="done">Læg i kurv</button>
     </div>
 </div>
-
-
-
 </body>
 </html>
