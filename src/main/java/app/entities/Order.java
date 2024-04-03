@@ -1,5 +1,5 @@
 package app.entities;
 
 public class Order {
-    private double
+    private double price;
 }
