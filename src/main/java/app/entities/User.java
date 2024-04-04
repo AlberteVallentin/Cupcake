@@ -58,4 +58,3 @@ public class User
                 ", balance=" + balance +
                 '}';
     }
-}

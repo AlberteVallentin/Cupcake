@@ -1,11 +1,11 @@
 package app.entities;
 
-public class Top {
+public class Bottom {
     private int id;
     private String name;
     private int price;
 
-    public Top(int id, String name, int price) {
+    public Bottom(int id,String name, int price) {
         this.id = id;
         this.name = name;
         this.price = price;
