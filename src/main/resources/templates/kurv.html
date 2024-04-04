@@ -34,19 +34,17 @@
                 <th>Pris</th>
                 <th>Action</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>Chocolate</td>
-                <td>Chocolate</td>
-                <td>12.00</td>
-                <td> <a th:href=""> Delete</a></td>
-
+            <tr th:each="cartline : ${session.cart.cartlines}">
+                <td th:text="${cartline.quantity}">1</td>
+                <td th:text="${cartline.top.name}">chokolade</td>
+                <td th:text="${cartline.bottom.name}">chokolade</td>
+                <td th:text="${cartline.getTotal()}">  </td>
             </tr>
             <tr class="totalprice">
                 <td>Total pris</td>
                 <td></td>
                 <td></td>
-                <td>12 kr</td>
+                <td th:text="${session.cart.getTotal()}">12 kr</td>
             </tr>
 
         </table>

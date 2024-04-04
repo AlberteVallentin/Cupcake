@@ -41,6 +41,28 @@ public class CupcakeMapper {
 
     }
 
+    public static Top getTopById(int id, ConnectionPool connectionPool) {
+        String sql = "SELECT * FROM top WHERE top_id = ?";
+        Top top = null;
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql);
+        ) {
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                int topId = rs.getInt("top_id");
+                String name = rs.getString("name");
+                int price = rs.getInt("price");
+                top = new Top(topId, name, price);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return top;
+    }
+
 
     public static List<Bottom> getAllBottoms(ConnectionPool connectionPool) {
         String sql = "SELECT * FROM bottom";
@@ -64,6 +86,28 @@ public class CupcakeMapper {
             throw new RuntimeException(e);
         }
         return bottomList;
+    }
+
+    public static Bottom getBottomById(int id, ConnectionPool connectionPool) {
+        String sql = "SELECT * FROM bottom WHERE bottom_id = ?";
+       Bottom bottom = null;
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql);
+        ) {
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                int bottomId = rs.getInt("bottom_id");
+                String name = rs.getString("name");
+                int price = rs.getInt("price");
+                bottom = new Bottom(bottomId, name, price);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return bottom;
     }
 
 
