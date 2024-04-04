@@ -1,7 +1,6 @@
 package app.entities;
 
-public class User
-{
+public class User {
     private int userId;
     private String name;
     private String password;
@@ -9,41 +8,37 @@ public class User
     private boolean admin;
     private double balance;
 
-    public User(int userId, String name, String password, String role)
-    {
+    public User(int userId, String name, String password, String role) {
         this.userId = userId;
         this.name = name;
         this.password = password;
-        this.email=email;
+        this.email = email;
         this.admin = admin;
-        this.balance=balance;
+        this.balance = balance;
 
     }
 
     public String getEmail() {
         return email;
     }
-    public double getBalance(){
+
+    public double getBalance() {
         return balance;
     }
 
-    public int getUserId()
-    {
+    public int getUserId() {
         return userId;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public String getPassword()
-    {
+    public String getPassword() {
         return password;
     }
 
-    public boolean getAdmin()
-    {
+    public boolean getAdmin() {
         return admin;
     }
 
@@ -58,3 +53,4 @@ public class User
                 ", balance=" + balance +
                 '}';
     }
+}
