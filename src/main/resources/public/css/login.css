@@ -108,6 +108,7 @@ input {
 input {
     width: 89%;
     height: 50%;
+    margin-bottom: 20px;
 }
 
 button {
@@ -120,6 +121,7 @@ button {
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-bottom: 20px;
 
 }
 
@@ -134,21 +136,25 @@ input::placeholder {
     font-family: "Poppins", sans-serif;
     margin-bottom: 0px;
 }
-.fields-flexbox
+.submit
 {
+    display: flex;
+    justify-content: center;
 
 }
-.email
-{
 
-}
-.password
+.cancelbtn
 {
-
+    display: flex;
+    justify-content: center;
+margin-bottom: 20px;
 }
-.containercancel
+.opretkonto
 {
-
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
+
 
 
