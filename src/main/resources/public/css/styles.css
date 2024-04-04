@@ -15,10 +15,11 @@ header {
 }
 
 h1 {
-    font-size: 70px; /* Adjust font size to match your design */
-    margin-bottom: 20px; /* Adjust margin to match your design */
+    font-size: 70px;
+    margin-bottom: 20px;
     text-align: center;
 }
+
 
 
 nav,
@@ -63,28 +64,28 @@ nav a img {
 }
 
 .order-container {
-    max-width: 600px; /* Adjust width to match your design */
+    max-width: 600px;
     margin: auto;
     text-align: center;
 }
 
 h2 {
-    font-size: 24px; /* Adjust font size to match your design */
-    margin-bottom: 20px; /* Adjust margin to match your design */
+    font-size: 32px;
+    margin-bottom: 20px;
 }
 
 .dropdown-container {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px; /* Adjust margin to match your design */
+    margin-bottom: 20px;
 }
 
 .dropdown {
-    width: 48%; /* Adjust width to give space between dropdowns */
+    width: 48%;
 }
 
 .dropdown label {
-    display: none; /* Hide the label, as it's not shown in your design */
+    display: none;
 }
 
 select {
@@ -105,8 +106,9 @@ input {
     cursor: pointer;
 }
 
-input{
+input {
     width: 89%;
+    height: 50%;
 }
 
 button {
@@ -119,6 +121,18 @@ button {
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s;
+}
+
+button, select, label {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+
+}
+
+input::placeholder {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 0px;
 }
 
 
