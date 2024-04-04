@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<title>Frontpage</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../public/css/styles.css" th:href="@{/css/kurv.css}" rel="stylesheet"/>
+<header>
+    <img alt="banner" src="../public/images/banner.png">
+</header>
+
+<nav>
+
+    <div class="logo">
+        <img class="logo" alt="logo" src="../public/images/logo.png">LOGO
+    </div>
+
+    <ul>
+        <li><a href="#">Hjem</a></li>
+        <li><a href="#">Login/Opret</a></li>
+        <li><a href="#">Kurv</a></li>
+    </ul>
+
+</nav>
+<body>
+<div class="container">
+    <h2>Dine Ordrer</h2>
+    <div class="container-ordre">
+        <table>
+            <tr>
+                <th>Antal</th>
+                <th>Bund</th>
+                <th>Topping</th>
+                <th>Pris</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Chocolate</td>
+                <td>Chocolate</td>
+                <td>12.00</td>
+                <td> <a th:href=""> Delete</a></td>
+
+            </tr>
+            <tr class="totalprice">
+                <td>Total pris</td>
+                <td></td>
+                <td></td>
+                <td>12 kr</td>
+            </tr>
+
+        </table>
+
+
+    </div>
+</div>
+</body>
