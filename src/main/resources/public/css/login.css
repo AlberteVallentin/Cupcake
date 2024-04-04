@@ -8,6 +8,11 @@
     align-self: center;
     flex-direction: column;
     text-align: center;
+
+}
+.fields-flexbox
+{
+ align-content: center;
 }
 
 .email {

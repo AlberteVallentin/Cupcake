@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<title>cupcake</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="../public/css/login.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
-</head>
-<body>
-<title>login</title>
+<title>Frontpage</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
@@ -22,27 +16,26 @@
     </ul>
 </nav>
 
-<div class="flexbox-container">
-    <h1 class="logind">Log ind </h1>
 
 
+    <div class="flexbox-container">
+        <h1 class="logind">Log ind </h1>
     <form method="post">
+        <div class="fields-flexbox">
         <div class="email">
             <input type="text" name="Email" placeholder="Din Email"/>
         </div>
         <div class="password">
             <input type="password" name="password" placeholder="Dit password"/>
         </div>
+    </div>
+        <div class="button-flexbox">
         <div class="submit">
-            <button type="submit" formaction="/login">Login</button>
+            <button type="submit" formaction="/login">Log ind</button>
+        </div>
         </div>
     </form>
 </div>
-
-
-
-
-
 
 </body>
 </html>
