@@ -1,29 +1,9 @@
-:root {
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+
+:root{
     --purple-color: #5A5FD0;
 }
-
-.flexbox-container {
-    display: flex;
-    border: 3px solid #5A5FD0;
-    align-self: center;
-    flex-direction: column;
-    text-align: center;
-
-}
-.fields-flexbox
-{
- align-content: center;
-}
-
-.email {
-    align-items: center;
-    min-height: 20px;
-    flex-grow: 1;
-    flex-basis: 0;
-    align-content: space-around;
-
-}
-
 body {
     padding: 0;
     margin: 0;
@@ -35,6 +15,11 @@ header {
     text-align: center;
 }
 
+h1 {
+    font-size: 30px;
+    margin-bottom: 40px;
+    text-align: center;
+}
 
 nav,
 ul {
@@ -75,6 +60,91 @@ nav a img {
     width: 25%;
     margin: 0;
     padding: 0;
+}
+
+.order-container {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.dropdown-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.dropdown {
+    width: 48%;
+}
+
+.dropdown label {
+    display: none;
+}
+
+select {
+    width: 100%;
+    padding: 15px;
+    border-radius: 25px;
+    border: 1px solid #CCC;
+    appearance: none; /* Remove default style of select dropdown */
+    background: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 10px top 50%;
+    cursor: pointer;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 25px;
+    border: 1px solid #CCC;
+    cursor: pointer;
+}
+
+input {
+    width: 89%;
+    height: 50%;
+}
+
+button {
+    width: 50%;
+    padding: 15px;
+    border-radius: 25px;
+    border: none;
+    background-color: var(--purple-color);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+}
+
+button, select, label {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+
+}
+
+input::placeholder {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 0px;
+}
+.fields-flexbox
+{
+
+}
+.email
+{
+
+}
+.password
+{
+
 }
 
 
