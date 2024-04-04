@@ -137,8 +137,22 @@ input::placeholder {
 }
 .btn1
 {
-justify-items: center;
+display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
+.btn2
+{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.label1
+{
+
+}
+
 
 
 
