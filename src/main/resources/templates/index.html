@@ -32,9 +32,9 @@
         <div class="dropdown">
             <select name="top">
                 <option>Vælg en topping</option>
-                <option th:each="category: ${session.categoryMap.values}"
-                        th:value="${category.categoryId}"
-                        th:text="${category.name +' (' + category.categoryId + ')'}"
+                <option th:each="top: ${topList}"
+                        th:value="${top.id}"
+                        th:text="${top.name +' (' + top.price + ')'}"
                         value="1">Name
                 </option>
             </select>
@@ -42,9 +42,9 @@
         <div class="dropdown">
             <select name="bottom">
                 <option>Vælg en bund</option>
-                <option th:each="category: ${session.categoryMap.values}"
-                        th:value="${category.categoryId}"
-                        th:text="${category.name +' (' + category.categoryId + ')'}"
+                <option th:each="bottom: ${bottomList}"
+                        th:value="${bottom.id}"
+                        th:text="${bottom.name +' (' + bottom.price + ')'}"
                         value="1">Name
                 </option>
             </select>
