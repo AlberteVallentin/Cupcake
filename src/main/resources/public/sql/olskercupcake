@@ -5,7 +5,7 @@
 -- Dumped from database version 16.2 (Debian 16.2-1.pgdg120+2)
 -- Dumped by pg_dump version 16.1
 
--- Started on 2024-04-03 18:38:25 UTC
+-- Started on 2024-04-04 07:52:59 UTC
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -90,8 +90,6 @@ CREATE TABLE public.order_lines (
     order_id integer NOT NULL,
     top_id integer NOT NULL,
     bottom_id integer NOT NULL,
-    top_price double precision NOT NULL,
-    bottom_price double precision NOT NULL,
     amount integer NOT NULL
 );
 
@@ -211,7 +209,6 @@ CREATE TABLE public.users (
     name character varying(50) NOT NULL,
     password character varying(50) NOT NULL,
     email character varying(100) NOT NULL,
-    employee boolean,
     admin boolean,
     balance integer
 );
@@ -336,10 +333,10 @@ INSERT INTO public.top VALUES (9, 'Blue cheese', 5);
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.users VALUES (1, 'Malte Pavón Olesen', '1234', 'malte@hotmail.com', false, false, 10000);
-INSERT INTO public.users VALUES (2, 'Kamilla', '1234', 'kamilla@hotmail.com', true, NULL, 10000);
-INSERT INTO public.users VALUES (3, 'Alfredo Moises Fernandez', '1234', 'alfredo@hotmail.com', NULL, true, 10000);
-INSERT INTO public.users VALUES (4, 'Alberte', '1234', 'alberte@hotmail.com', false, false, 10000);
+INSERT INTO public.users VALUES (1, 'Malte Pavón Olesen', '1234', 'malte@hotmail.com', false, 10000);
+INSERT INTO public.users VALUES (2, 'Kamilla', '1234', 'kamilla@hotmail.com', NULL, 10000);
+INSERT INTO public.users VALUES (3, 'Alfredo Moises Fernandez', '1234', 'alfredo@hotmail.com', true, 10000);
+INSERT INTO public.users VALUES (4, 'Alberte', '1234', 'alberte@hotmail.com', false, 10000);
 
 
 --
@@ -468,7 +465,7 @@ ALTER TABLE ONLY public.order_lines
     ADD CONSTRAINT top_id FOREIGN KEY (top_id) REFERENCES public.top(top_id) NOT VALID;
 
 
--- Completed on 2024-04-03 18:38:25 UTC
+-- Completed on 2024-04-04 07:53:00 UTC
 
 --
 -- PostgreSQL database dump complete

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<title>Frontpage</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../public/css/admin.css" th:href="@{/css/admin.css}" rel="stylesheet"/>
+
+<body>
+<header>
+    <a href="index.html" th:href="@{/}">
+        <img src="../public/images/banner.png" th:src="@{/images/banner.png}"/>
+    </a>
+</header>
+
+<nav>
+    <a href="index.html" th:href="@{/}">
+        <img class ="logo" src="../public/images/logo.png" th:src="@{/images/logo.png}"/>
+    </a>
+    <ul>
+        <li><a href="#">Hjem</a></li>
+        <li><a href="#">Login/Opret</a></li>
+        <li><a href="#">Kurv</a></li>
+    </ul>
+</nav>
+
+<h1>Admin login</h1>
+
+<div class="order-container">
+    <h3>Login med dine admin credentials</h3>
+    <div class="dropdown-container">
+        <div class="dropdown">
+            <input name="email" placeholder="email"></input>
+        </div>
+        <div class="dropdown">
+            <input name="password" type="password" placeholder="password">
+        </div>
+    </div>
+    <div class="button-container">
+        <div class="dropdown">
+            <button type="submit">Login</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
