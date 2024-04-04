@@ -1,3 +1,23 @@
+:root {
+    --purple-color: #5A5FD0;
+}
+
+.flexbox-container {
+    display: flex;
+    border: 3px solid #5A5FD0;
+    align-self: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.email {
+    align-items: center;
+    min-height: 20px;
+    flex-grow: 1;
+    flex-basis: 0;
+    align-content: space-around;
+
+}
 
 body {
     padding: 0;
@@ -10,9 +30,6 @@ header {
     text-align: center;
 }
 
-header h1 {
-    font-size: 40px;
-}
 
 nav,
 ul {
@@ -24,22 +41,17 @@ ul {
 
 nav {
     padding: 0 70px;
-    background: #010101;
+    background: var(--purple-color);
     justify-content: space-between;
     position: sticky;
     top: 0;
 }
 
-nav .logo,
+
 nav ul {
     list-style: none;
 }
 
-nav .logo {
-    color: white;
-    font-size: 30px;
-    font-weight: bolder;
-}
 
 nav li {
     position: relative;
@@ -53,3 +65,11 @@ nav li a {
     position: relative;
     text-decoration: none;
 }
+
+nav a img {
+    width: 25%;
+    margin: 0;
+    padding: 0;
+}
+
+
