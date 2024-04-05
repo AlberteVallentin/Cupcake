@@ -1,9 +1,12 @@
 package app.controllers;
 
+import app.entities.Bottom;
+import app.entities.Top;
+
 public class OrderController {
 
    private  Top top;
-   private  Botton botton;
+   private  Bottom bottom;
    private int quantity;
 
 
@@ -11,8 +14,8 @@ public class OrderController {
         return top;
     }
 
-    public Botton getBotton() {
-        return botton;
+    public Bottom getbottom() {
+        return bottom;
     }
 
     public int getQuantity() {
