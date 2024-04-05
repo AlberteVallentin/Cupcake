@@ -11,7 +11,10 @@ import java.sql.SQLException;
 public class UserMapper
 {
 
+   // public static User login(String userName, String password, ConnectionPool connectionPool) throws DatabaseException
+
     public static User adminLoginCheck(String email, String password, ConnectionPool connectionPool) throws DatabaseException
+
     {
         String sql = "select * from users where email=? and password=?";
 

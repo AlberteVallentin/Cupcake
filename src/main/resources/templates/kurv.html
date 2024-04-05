@@ -4,53 +4,57 @@
 <title>Frontpage</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="../public/css/styles.css" th:href="@{/css/kurv.css}" rel="stylesheet"/>
-<header>
-    <img alt="banner" src="../public/images/banner.png">
-</header>
-
+<link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+<link href="../public/css/kurv.css" th:href="@{/css/kurv.css}" rel="stylesheet"/>
 <nav>
-
-    <div class="logo">
-        <img class="logo" alt="logo" src="../public/images/logo.png">LOGO
-    </div>
-
+    <a href="index.html" th:href="@{/}">
+        <img class ="logo" src="../public/images/logo.png" th:src="@{/images/logo.png}"/>
+    </a>
     <ul>
         <li><a href="#">Hjem</a></li>
         <li><a href="#">Login/Opret</a></li>
-        <li><a href="#">Kurv</a></li>
+        <li><a href="kurv.html">Kurv</a></li>
     </ul>
-
 </nav>
 <body>
 <div class="container">
     <h2>Dine Ordrer</h2>
     <div class="container-ordre">
+        <form method="post">
         <table>
             <tr>
                 <th>Antal</th>
                 <th>Bund</th>
                 <th>Topping</th>
                 <th>Pris</th>
-                <th>Action</th>
+
             </tr>
-            <tr>
-                <td>1</td>
-                <td>Chocolate</td>
-                <td>Chocolate</td>
-                <td>12.00</td>
-                <td> <a th:href=""> Delete</a></td>
+            <tr th:each="cartline : ${session.cart.cartlines}">
+                <td th:text="${cartline.quantity}"></td>
+                <td th:text="${cartline.top.name}"></td>
+                <td th:text="${cartline.bottom.name}"></td>
+                <td th:text="${cartline.getTotal()}"></td>
+
+             <!--   <td>
+                    <button type="submit" name="orderId" th:value="${order.orderId}">Delete</button>
+                </td>
+                -->
 
             </tr>
             <tr class="totalprice">
                 <td>Total pris</td>
                 <td></td>
                 <td></td>
-                <td>12 kr</td>
+                <td th:text="${session.cart.getTotal()}"></td>
             </tr>
-
         </table>
+            <div th:unless="${session.currentUser != null}">
+                <a href="page.html" th:href="@{/admin}">
+                    <button class="btn btn-ok" type="submit" formaction="/login">køb nu</button>
+                </a>
+            </div>
 
+        </form>
 
     </div>
 </div>

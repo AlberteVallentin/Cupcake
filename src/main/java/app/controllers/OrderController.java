@@ -5,6 +5,7 @@ import app.entities.Top;
 
 public class OrderController {
 
+
    private  Top top;
    private  Bottom bottom;
    private int quantity;
@@ -21,6 +22,7 @@ public class OrderController {
     public int getQuantity() {
         return quantity;
     }
+
 
 
 }
