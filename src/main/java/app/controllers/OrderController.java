@@ -14,7 +14,7 @@ public class OrderController {
         return top;
     }
 
-    public Bottom getbottom() {
+    public Bottom getBotton() {
         return bottom;
     }
 
