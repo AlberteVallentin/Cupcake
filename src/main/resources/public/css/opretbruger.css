@@ -16,7 +16,7 @@ header {
 }
 
 h1 {
-    font-size: 70px;
+    font-size: 30px;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -113,7 +113,7 @@ input {
 }
 
 button {
-    width: 100%;
+    width: 50%;
     padding: 15px;
     border-radius: 25px;
     border: none;
@@ -135,4 +135,10 @@ input::placeholder {
     font-family: "Poppins", sans-serif;
     margin-bottom: 0px;
 }
+.btn1
+{
+justify-items: center;
+}
+
+
 

@@ -16,12 +16,10 @@ header {
 }
 
 h1 {
-    font-size: 70px;
-    margin-bottom: 20px;
+    font-size: 30px;
+    margin-bottom: 40px;
     text-align: center;
 }
-
-
 
 nav,
 ul {
@@ -113,7 +111,7 @@ input {
 }
 
 button {
-    width: 100%;
+    width: 50%;
     padding: 15px;
     border-radius: 25px;
     border: none;
@@ -122,6 +120,7 @@ button {
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s;
+
 }
 
 button, select, label {
@@ -135,4 +134,17 @@ input::placeholder {
     font-family: "Poppins", sans-serif;
     margin-bottom: 0px;
 }
+.fields-flexbox
+{
+
+}
+.email
+{
+
+}
+.password
+{
+
+}
+
 

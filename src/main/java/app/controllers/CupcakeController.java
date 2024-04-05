@@ -10,6 +10,8 @@ import io.javalin.http.Context;
 import java.util.List;
 
 
+import static app.controllers.UserController.adminLogin;
+
 public class CupcakeController {
 
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
@@ -54,8 +56,8 @@ public class CupcakeController {
     }
 
 
-    private static void addToCart(Context ctx, ConnectionPool connectionPool) throws DatabaseException {
 
+    private static void addToCart(Context ctx, ConnectionPool connectionPool) {
 
             User user = ctx.sessionAttribute("currentUser");
             try {
@@ -112,4 +114,4 @@ public class CupcakeController {
 
 
 
-}
+
