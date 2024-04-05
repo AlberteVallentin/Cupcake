@@ -10,25 +10,28 @@ import java.sql.SQLException;
 
 public class UserMapper
 {
-    //dasd
-    public static User login(String userName, String password, ConnectionPool connectionPool) throws DatabaseException
+
+    public static User adminLoginCheck(String email, String password, ConnectionPool connectionPool) throws DatabaseException
     {
-        String sql = "select * from users where username=? and password=?";
+        String sql = "select * from users where email=? and password=?";
 
         try (
                 Connection connection = connectionPool.getConnection();
                 PreparedStatement ps = connection.prepareStatement(sql)
         )
         {
-            ps.setString(1, userName);
+            ps.setString(1, email);
             ps.setString(2, password);
 
             ResultSet rs = ps.executeQuery();
             if (rs.next())
             {
-                int id = rs.getInt("user_id");
-                String role = rs.getString("role");
-                return new User(id, userName, password, role);
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                boolean admin = rs.getBoolean("admin");
+                double balance = rs.getDouble("balance");
+
+                return new User(id, name, password, email, admin, balance);
             } else
             {
                 throw new DatabaseException("Fejl i login. Prøv igen");

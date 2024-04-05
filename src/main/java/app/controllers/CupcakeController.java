@@ -15,13 +15,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static app.controllers.UserController.adminLogin;
+
 public class CupcakeController {
 
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
         app.get("/", ctx -> index(ctx, connectionPool));
         app.post("/addtocart", ctx -> addToCart(ctx, connectionPool));
     }
-
     private static void addToCart(Context ctx, ConnectionPool connectionPool) {
             User user = ctx.sessionAttribute("currentUser");
             try {

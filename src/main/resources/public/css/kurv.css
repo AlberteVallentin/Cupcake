@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+body {
+    padding: 0;
+    margin: 0;
+    min-height: 200vh;
+    font-family: "Poppins", sans-serif;
+}
+
+header {
+    text-align: center;
+}
+
+header h1 {
+    font-size: 40px;
+}
+
+nav,
+ul {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+nav {
+    padding: 0 70px;
+    background: #5A5FD0;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+}
+
+nav .logo,
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav .logo {
+    color: white;
+    font-size: 30px;
+    font-weight: bolder;
+    width: 4rem;
+}
+
+nav li {
+    position: relative;
+}
+
+nav li a {
+    color: white;
+    display: inline-block;
+    font-weight: 100;
+    letter-spacing: 2px;
+    position: relative;
+    text-decoration: none;
+}
+
+/*********** Table ordrer**************/
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-ordre table {
+    width: 800px;
+    border-collapse: collapse;
+    border: 1px solid silver;
+}
+
+.container-ordre td {
+    text-align: center;
+}
+
+.totalprice {
+    border-top: 1px solid black;
+}

@@ -8,7 +8,7 @@ public class User {
     private boolean admin;
     private double balance;
 
-    public User(int userId, String name, String password, String role) {
+    public User(int userId, String name, String password, String email, boolean admin, double balance) {
         this.userId = userId;
         this.name = name;
         this.password = password;
