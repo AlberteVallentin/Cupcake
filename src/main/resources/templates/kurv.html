@@ -49,9 +49,11 @@
             </tr>
         </table>
             <div th:unless="${session.currentUser != null}">
-                <a href="page.html" th:href="@{/admin}">
-                    <button class="btn btn-ok" type="submit" formaction="/login">køb nu</button>
-                </a>
+                    <button class="btn btn-ok" type="submit" formaction="/login"> Login før Køb</button>
+            </div>
+
+            <div th:unless="${session.currentUser == null}">
+                <button class="btn btn-ok" type="submit" formaction=""> Køb nu</button>
             </div>
 
         </form>
