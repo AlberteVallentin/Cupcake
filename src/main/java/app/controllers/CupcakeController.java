@@ -19,14 +19,10 @@ public class CupcakeController {
         app.post("/addtocart", ctx -> addToCart(ctx, connectionPool));
         app.get("/cart", ctx -> cart(ctx, connectionPool));
         app.post("/createordre", ctx -> createordre(ctx,connectionPool));
-        app.get("/loginn",ctx -> loginn(ctx,connectionPool));
       //  app.post("deleteorder", ctx -> deleteorder(ctx,false,connectionPool));
 
     }
 
-    private static void loginn(Context ctx, ConnectionPool connectionPool) {
-        ctx.render("page.html");
-    }
 
     private static void createordre(Context ctx, ConnectionPool connectionPool) {
 
