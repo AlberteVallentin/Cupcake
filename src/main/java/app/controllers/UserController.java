@@ -13,10 +13,16 @@ public class UserController
 {
     public static void addRoutes(Javalin app, ConnectionPool connectionPool)
     {
-        app.post("login", ctx -> login(ctx, connectionPool));
+        app.post("login", ctx -> adminLogin(ctx, connectionPool));
         app.get("logout", ctx -> logout(ctx));
         app.get("createuser", ctx -> ctx.render("createuser.html"));
         app.post("createuser", ctx -> createUser(ctx, connectionPool));
+        app.get("/admin", ctx -> adminLoginPage(ctx,connectionPool));
+        app.post("/adminLogin", ctx -> adminLogin(ctx,connectionPool));
+    }
+
+    private static void adminLoginPage(Context ctx, ConnectionPool connectionPool) {
+        ctx.render("adminlogin.html");
     }
 
     private static void createUser(Context ctx, ConnectionPool connectionPool)
@@ -56,26 +62,29 @@ public class UserController
     }
 
 
-    public static void login(Context ctx, ConnectionPool connectionPool)
+    public static void adminLogin(Context ctx, ConnectionPool connectionPool)
     {
         // Hent form parametre
-        String username = ctx.formParam("username");
+        String email = ctx.formParam("email");
         String password = ctx.formParam("password");
 
         // Check om bruger findes i DB med de angivne username + password
         try
         {
-            User user = UserMapper.login(username, password, connectionPool);
+            User user = UserMapper.adminLogin(email, password,connectionPool);
             ctx.sessionAttribute("currentUser", user);
-            // Hvis ja, send videre til forsiden med login besked
-            ctx.attribute("message", "Du er nu logget ind");
-            ctx.render("index.html");
+            // Hvis ja, send videre til admin page
+            if(user.getAdmin()) {
+                ctx.render("adminpage.html");
+            }
+            else{
+                ctx.attribute("message","Fejl i enten email eller kode");
+            }
         }
         catch (DatabaseException e)
         {
             // Hvis nej, send tilbage til login side med fejl besked
             ctx.attribute("message", e.getMessage() );
-            ctx.render("index.html");
         }
 
     }
