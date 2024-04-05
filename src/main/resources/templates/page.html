@@ -9,6 +9,9 @@
     <a href="index.html" th:href="@{/}">
         <img class ="logo" src="../public/images/logo.png" th:src="@{/images/logo.png}"/>
     </a>
+    <div th:if="${session.currentUser != null}">
+        <div class="user-email" th:text="${session.currentUser.email}"></div>
+    </div>
     <ul>
         <li><a href="#">Hjem</a></li>
         <li><a href="#">Login/Opret</a></li>
