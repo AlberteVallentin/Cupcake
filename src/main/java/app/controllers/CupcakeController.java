@@ -45,7 +45,7 @@ public class CupcakeController {
                 }
             } catch (DatabaseException e) {
                 ctx.attribute("message", e.getMessage());
-                ctx.render("kurv.html");
+                ctx.render("index.html");
                 return;
             }
         }
