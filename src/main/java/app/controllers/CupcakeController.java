@@ -90,8 +90,7 @@ public class CupcakeController {
         private static void index(Context ctx, ConnectionPool connectionPool) {
             User user = ctx.sessionAttribute("currentUser");
             Cart cart = ctx.sessionAttribute("cart");
-            if (cart == null)
-            {
+            if (cart == null) {
                 cart = new Cart();
                 ctx.sessionAttribute("cart", cart);
             }
@@ -108,7 +107,7 @@ public class CupcakeController {
                 ctx.render("index.html");
             }
 
-
+        }
     }
 
 
