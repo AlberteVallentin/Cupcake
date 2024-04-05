@@ -78,6 +78,9 @@ public class UserController
             if(user.getAdmin()) {
                 ctx.render("adminpage.html");
             }
+            else{
+                ctx.render("kurv.html");
+            }
         }
         catch (DatabaseException e)
         {
@@ -85,6 +88,5 @@ public class UserController
             ctx.attribute("message","Fejl i enten email eller kode");
             ctx.render("adminlogin.html");
         }
-
     }
 }
