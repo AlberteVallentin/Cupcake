@@ -4,6 +4,7 @@ import app.entities.*;
 import app.exceptions.DatabaseException;
 import app.persistence.ConnectionPool;
 import app.persistence.CupcakeMapper;
+import app.persistence.UserMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 import java.util.List;
@@ -15,13 +16,47 @@ public class CupcakeController {
         app.get("/", ctx -> index(ctx, connectionPool));
         app.post("/addtocart", ctx -> addToCart(ctx, connectionPool));
         app.get("/cart", ctx -> cart(ctx, connectionPool));
+        app.post("/createordre", ctx -> createordre(ctx,connectionPool));
+        app.get("/login",ctx -> loginn(ctx,connectionPool));
+      //  app.post("deleteorder", ctx -> deleteorder(ctx,false,connectionPool));
+
     }
+
+    private static void loginn(Context ctx, ConnectionPool connectionPool) {
+        ctx.render("page.html");
+    }
+
+    private static void createordre(Context ctx, ConnectionPool connectionPool) {
+
+    }
+/*
+    private static void deleteorder(Context ctx, boolean b, ConnectionPool connectionPool) {
+
+        User user = ctx.sessionAttribute("currentUser");
+        try {
+
+            int taskId = Integer.parseInt(ctx.formParam("taskId"));
+            CupcakeMapper.delete(taskId,connectionPool);
+            List<Order> orderlist = CupcakeMapper.getAllOrdersPerUser(user.getUserId(), connectionPool);
+            ctx.attribute("orderlist", orderlist);
+            ctx.render("kurv.html");
+
+        } catch (DatabaseException | NumberFormatException e) {
+            ctx.attribute("message", e.getMessage());
+            ctx.render("index.html");
+        }
+    }
+
+ */
 
     private static void cart(Context ctx, ConnectionPool connectionPool) {
         ctx.render("kurv.html");
     }
 
-    private static void addToCart(Context ctx, ConnectionPool connectionPool) {
+
+    private static void addToCart(Context ctx, ConnectionPool connectionPool) throws DatabaseException {
+
+
             User user = ctx.sessionAttribute("currentUser");
             try {
                 int topId = Integer.parseInt(ctx.formParam("top"));
@@ -73,6 +108,8 @@ public class CupcakeController {
 
 
     }
+
+
 
 
 }

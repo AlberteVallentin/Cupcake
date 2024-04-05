@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class UserMapper
 {
-    //dasd
+
     public static User login(String userName, String password, ConnectionPool connectionPool) throws DatabaseException
     {
         String sql = "select * from users where username=? and password=?";

@@ -1,7 +1,9 @@
 package app.persistence;
 
 import app.entities.Bottom;
+import app.entities.Order;
 import app.entities.Top;
+import app.exceptions.DatabaseException;
 import io.javalin.Javalin;
 
 import java.math.BigDecimal;
@@ -110,5 +112,57 @@ public class CupcakeMapper {
         return bottom;
     }
 
+     /*
+    public static void delete(int orderId, ConnectionPool connectionPool) throws DatabaseException
+    {
+        String sql = "delete from orders where order_id = ?";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        )
+        {
+            ps.setInt(1, orderId);
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected != 1)
+            {
+                throw new DatabaseException("Fejl i opdatering af en order");
+            }
+        }
+        catch (SQLException e)
+        {
+            throw new DatabaseException("Fejl ved sletning af en order", e.getMessage());
+        }
+    }
+
+
+    public static List<Order> getAllOrdersPerUser(int userId, ConnectionPool connectionPool)throws DatabaseException{
+
+        List<Order> orderList = new ArrayList<>();
+        String sql = "select * from orders where costumer_id=? order by order_id  ";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        )
+        {
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next())
+            {
+                int id = rs.getInt("costumer_id");
+                int orderId = rs.getInt("order_id");
+                orderList.add(new Order(id, orderId, userId));
+            }
+        }
+        catch (SQLException e)
+        {
+            throw new DatabaseException("Fejl!!!!", e.getMessage());
+        }
+        return orderList;
+
+    }
+
+     */
 
 }
