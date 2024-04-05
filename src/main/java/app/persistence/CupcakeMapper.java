@@ -3,6 +3,7 @@ package app.persistence;
 import app.entities.Bottom;
 import app.entities.Order;
 import app.entities.Top;
+import app.entities.User;
 import app.exceptions.DatabaseException;
 import io.javalin.Javalin;
 
@@ -111,6 +112,40 @@ public class CupcakeMapper {
         }
         return bottom;
     }
+
+    public static void withdrawFromBalance(User user, double totalPrice, ConnectionPool connectionPool) {
+
+        String sql = "SELECT * from users where user_id=?";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql);
+        ) {
+            ps.setInt(1, user.getUserId());
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                double currentBalance = rs.getInt("balance");
+                double newBalance = currentBalance - totalPrice;
+                if (newBalance < totalPrice) {
+                    System.out.println("Insufficient funds!");
+
+                }
+                String updatesql = "update users set balance=? where user_id=?";
+                PreparedStatement ps02 = connection.prepareStatement(updatesql);
+                ps02.setDouble(1, newBalance);
+                ps02.setInt(2, user.getUserId());
+                ps02.executeUpdate();
+
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
 
      /*
     public static void delete(int orderId, ConnectionPool connectionPool) throws DatabaseException

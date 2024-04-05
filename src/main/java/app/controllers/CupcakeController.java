@@ -43,6 +43,9 @@ public class CupcakeController {
                 for (CartLine item : cart.getCartLines()) {
                     CupcakeMapper.insertOrderLine(orderId, item.getTop().getId(), item.getBottom().getId(), item.getQuantity(), connectionPool);
                 }
+
+                //Withdraw from balance
+                CupcakeMapper.withdrawFromBalance(user,totalPrice,connectionPool);
             } catch (DatabaseException e) {
                 ctx.attribute("message", e.getMessage());
                 ctx.render("index.html");
