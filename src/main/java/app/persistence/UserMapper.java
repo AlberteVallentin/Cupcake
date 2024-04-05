@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class UserMapper
 {
 
-    public static User adminLogin(String email, String password, ConnectionPool connectionPool) throws DatabaseException
+    public static User adminLoginCheck(String email, String password, ConnectionPool connectionPool) throws DatabaseException
     {
         String sql = "select * from users where email=? and password=?";
 
@@ -26,7 +26,7 @@ public class UserMapper
             ResultSet rs = ps.executeQuery();
             if (rs.next())
             {
-                int id = rs.getInt("user_id");
+                int id = rs.getInt("id");
                 String name = rs.getString("name");
                 boolean admin = rs.getBoolean("admin");
                 double balance = rs.getDouble("balance");

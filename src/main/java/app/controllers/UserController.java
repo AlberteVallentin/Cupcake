@@ -17,8 +17,9 @@ public class UserController
         app.get("logout", ctx -> logout(ctx));
         app.get("createuser", ctx -> ctx.render("createuser.html"));
         app.post("createuser", ctx -> createUser(ctx, connectionPool));
+
+        app.post("adminLogin", ctx -> adminLogin(ctx,connectionPool));
         app.get("/admin", ctx -> adminLoginPage(ctx,connectionPool));
-        app.post("/adminLogin", ctx -> adminLogin(ctx,connectionPool));
     }
 
     private static void adminLoginPage(Context ctx, ConnectionPool connectionPool) {
@@ -71,20 +72,18 @@ public class UserController
         // Check om bruger findes i DB med de angivne username + password
         try
         {
-            User user = UserMapper.adminLogin(email, password,connectionPool);
+            User user = UserMapper.adminLoginCheck(email, password,connectionPool);
             ctx.sessionAttribute("currentUser", user);
             // Hvis ja, send videre til admin page
             if(user.getAdmin()) {
                 ctx.render("adminpage.html");
             }
-            else{
-                ctx.attribute("message","Fejl i enten email eller kode");
-            }
         }
         catch (DatabaseException e)
         {
             // Hvis nej, send tilbage til login side med fejl besked
-            ctx.attribute("message", e.getMessage() );
+            ctx.attribute("message","Fejl i enten email eller kode");
+            ctx.render("adminlogin.html");
         }
 
     }
