@@ -17,7 +17,7 @@
 
     <ul>
         <li><a href="index.html" th:href="@{/}">Hjem</a></li>
-        <li><a href="#">Login/Opret</a></li>
+        <li><a href="login.html" th:href="@{/loginpage}">Login/Opret</a></li>
         <li th:if="${session != null and session.currentUser != null and session.currentUser.admin}">
             <a href="adminpage.html" th:href="@{/adminpage}">Admin</a>
         </li>
