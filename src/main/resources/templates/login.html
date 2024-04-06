@@ -4,7 +4,7 @@
 <title>Frontpage</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="../public/css/admin.css" th:href="@{/css/admin.css}" rel="stylesheet"/>
+<link href="../public/css/login.css" th:href="@{/css/login.css}" rel="stylesheet"/>
 
 <body>
 <nav>
@@ -17,7 +17,7 @@
 
     <ul>
         <li><a href="index.html" th:href="@{/}">Hjem</a></li>
-        <li><a href="#">Login/Opret</a></li>
+        <li><a href="login.html" th:href="@{/loginpage}">Login/Opret</a></li>
         <li th:if="${session != null and session.currentUser != null and session.currentUser.admin}">
             <a href="adminpage.html" th:href="@{/adminpage}">Admin</a>
         </li>
@@ -49,9 +49,10 @@
 
                 <button type="submit" formaction="/login">Login</button>
         </div>
-
     </div>
         </form>
+
+    <a href="kurv.html" th:href="@{/cart}">Har du ikke en konto? Opret en her</a>
 </div>
 
 
