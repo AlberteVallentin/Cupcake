@@ -15,8 +15,8 @@ public class UserController
     {
         app.post("login", ctx -> adminLoginPage(ctx, connectionPool));
         app.get("logout", ctx -> logout(ctx));
-        app.get("createuser", ctx -> ctx.render("createuser.html"));
-        app.post("createuser", ctx -> createUser(ctx, connectionPool));
+        app.get("opretbruger", ctx -> ctx.render("opretbruger.html"));
+        app.post("opretbruger", ctx -> opretBruger(ctx, connectionPool));
 
         app.post("adminLogin", ctx -> adminLogin(ctx,connectionPool));
         app.get("/admin", ctx -> adminLoginPage(ctx,connectionPool));
@@ -27,18 +27,18 @@ public class UserController
         ctx.render("adminlogin.html");
     }
 
-    private static void createUser(Context ctx, ConnectionPool connectionPool)
+    private static void opretBruger(Context ctx, ConnectionPool connectionPool)
     {
         // Hent form parametre
-        String username = ctx.formParam("username");
-        String password1 = ctx.formParam("password1");
+        String username = ctx.formParam("email");
+        String password1 = ctx.formParam("password");
         String password2 = ctx.formParam("password2");
 
         if (password1.equals(password2))
         {
             try
             {
-                UserMapper.createuser(username, password1, connectionPool);
+                UserMapper.opretBruger(username, password1, connectionPool);
                 ctx.attribute("message", "Du er hermed oprettet med brugernavn: " + username +
                         ". Nu skal du logge på.");
                 ctx.render("index.html");
@@ -47,12 +47,12 @@ public class UserController
             catch (DatabaseException e)
             {
                 ctx.attribute("message", "Dit brugernavn findes allerede. Prøv igen, eller log ind");
-                ctx.render("createuser.html");
+                ctx.render("opretbruger.html");
             }
         } else
         {
             ctx.attribute("message", "Dine to passwords matcher ikke! Prøv igen");
-            ctx.render("createuser.html");
+            ctx.render("opretbruger.html");
         }
 
     }
