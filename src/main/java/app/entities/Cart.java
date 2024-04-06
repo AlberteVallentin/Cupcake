@@ -32,8 +32,17 @@ public class Cart {
            return sum;
     }
 
+    public int getTotalQuantity() {
+        int totalQuantity = 0;
+        for (CartLine cartLine : cartLines) {
+            totalQuantity += cartLine.getQuantity();
+        }
+        return totalQuantity;
+    }
+
     public int cartCount()
     {
+
         return cartLines.size();
     }
 }
