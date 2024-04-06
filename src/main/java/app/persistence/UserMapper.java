@@ -46,16 +46,16 @@ public class UserMapper
         }
     }
 
-    public static void opretBruger(String userName, String password, ConnectionPool connectionPool) throws DatabaseException
+    public static void opretBruger(String email, String password, ConnectionPool connectionPool) throws DatabaseException
     {
-        String sql = "insert into users (name, password) values (?,?)";
+        String sql = "insert into users (email, password) values (?,?)";
 
         try (
                 Connection connection = connectionPool.getConnection();
                 PreparedStatement ps = connection.prepareStatement(sql)
         )
         {
-            ps.setString(1, userName);
+            ps.setString(1, email);
             ps.setString(2, password);
 
             int rowsAffected = ps.executeUpdate();

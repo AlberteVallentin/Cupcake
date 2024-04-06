@@ -31,7 +31,7 @@ public class UserController
     {
         // Hent form parametre
         String username = ctx.formParam("email");
-        String password1 = ctx.formParam("password");
+        String password1 = ctx.formParam("password1");
         String password2 = ctx.formParam("password2");
 
         if (password1.equals(password2))
