@@ -30,7 +30,7 @@ public class UserController
     private static void opretBruger(Context ctx, ConnectionPool connectionPool)
     {
         // Hent form parametre
-        String username = ctx.formParam("email");
+        String email = ctx.formParam("email");
         String password1 = ctx.formParam("password1");
         String password2 = ctx.formParam("password2");
 
@@ -38,10 +38,10 @@ public class UserController
         {
             try
             {
-                UserMapper.opretBruger(username, password1, connectionPool);
-                ctx.attribute("message", "Du er hermed oprettet med brugernavn: " + username +
+                UserMapper.opretBruger(email, password1, connectionPool);
+                ctx.attribute("message", "Du er hermed oprettet med brugernavn: " + email +
                         ". Nu skal du logge på.");
-                ctx.render("index.html");
+                ctx.render("adminlogin.html");
             }
 
             catch (DatabaseException e)

@@ -18,10 +18,10 @@
     </ul>
 </nav>
 
-<h1>Admin login</h1>
+<h1>Login</h1>
 
 <div class="order-container">
-    <h2>Login med dine admin credentials</h2>
+    <h2>Her kan du logge ind for at bestille</h2>
     <form class="generic-form" method="post">
     <div class="dropdown-container">
         <div class="dropdown">
@@ -36,11 +36,14 @@
 
                 <button type="submit" formaction="/adminLogin">Login</button>
         </div>
+        </div>
+
     </form>
-    </div>
 </div>
 
+    <div> <p th:text="${message}"></p></div>
 
+<p> <a href="opretbruger.html" th:href="@{/opretbruger}">Opret bruger</a> </p>
 
 
 

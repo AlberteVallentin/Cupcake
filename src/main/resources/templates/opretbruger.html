@@ -21,23 +21,24 @@
 <h1>Opret en bruger</h1>
 
 <div class="order-container">
-  <h2>Opret login for at bestille</h2>
+  <h2>Opret en bruger for at bestille din ordre</h2>
   <form class="generic-form" method="post">
     <div class="dropdown-container">
       <div class="dropdown">
-        <input name="email" placeholder="Email" type="text">
+        <input name="email" placeholder="Indtast email" type="text">
       </div>
       <div class="dropdown">
-        <input name="password1" placeholder="Password" type="password">
+        <input name="password1" placeholder="Indtast password" type="password">
       </div>
       <div class="dropdown">
-        <input name="password2" placeholder="Password" type="password">
+        <input name="password2" placeholder="Gentag Password" type="password">
       </div>
     </div>
     <div class="button-container">
       <div class="dropdown">
 
-        <button type="submit" formaction="/adminLogin">Opret bruger</button>
+        <button type="submit" formaction="/opretbruger">Opret bruger</button>
+        <div> <p th:text="${message}"></p> </div>
       </div>
       </div>
   </form>
