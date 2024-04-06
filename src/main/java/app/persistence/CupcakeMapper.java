@@ -3,6 +3,7 @@ package app.persistence;
 import app.entities.Bottom;
 import app.entities.Order;
 import app.entities.Top;
+import app.entities.User;
 import app.exceptions.DatabaseException;
 import io.javalin.Javalin;
 
@@ -112,6 +113,40 @@ public class CupcakeMapper {
         return bottom;
     }
 
+    public static void withdrawFromBalance(User user, double totalPrice, ConnectionPool connectionPool) {
+
+        String sql = "SELECT * from users where user_id=?";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql);
+        ) {
+            ps.setInt(1, user.getUserId());
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                double currentBalance = rs.getInt("balance");
+                double newBalance = currentBalance - totalPrice;
+                if (newBalance < totalPrice) {
+                    System.out.println("Insufficient funds!");
+
+                }
+                String updatesql = "update users set balance=? where user_id=?";
+                PreparedStatement ps02 = connection.prepareStatement(updatesql);
+                ps02.setDouble(1, newBalance);
+                ps02.setInt(2, user.getUserId());
+                ps02.executeUpdate();
+
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
      /*
     public static void delete(int orderId, ConnectionPool connectionPool) throws DatabaseException
     {
@@ -165,4 +200,38 @@ public class CupcakeMapper {
 
      */
 
+    public static int insertOrder(int userId, double totalPrice, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "INSERT INTO orders (user_id, total_price) VALUES (?, ?) RETURNING order_id";
+
+        try (Connection conn = connectionPool.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, userId);
+            stmt.setDouble(2, totalPrice);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("order_id");
+            } else {
+                throw new DatabaseException("Failed to insert order. No order ID returned.");
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException("Error inserting order: " + e.getMessage());
+        }
+    }
+
+    public static void insertOrderLine(int orderId, int topId, int bottomId, int quantity, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "INSERT INTO order_lines (order_id, top_id, bottom_id, amount) VALUES (?, ?, ?, ?)";
+
+        try (Connection conn = connectionPool.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, orderId);
+            stmt.setInt(2, topId);
+            stmt.setInt(3, bottomId);
+            stmt.setInt(4, quantity);
+
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new DatabaseException("Error inserting order line: " + e.getMessage());
+        }
+    }
 }

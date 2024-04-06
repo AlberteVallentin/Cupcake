@@ -27,6 +27,36 @@ public class CupcakeController {
 
     private static void showReceipt(Context ctx, ConnectionPool connectionPool) {
 
+
+        User user = ctx.sessionAttribute("currentUser");
+        Cart cart = ctx.sessionAttribute("cart");
+
+        if (user != null && cart != null) {
+            try {
+                // Calculate total price of the cart
+                double totalPrice = cart.getTotal();
+
+                // Insert order into the orders table
+                int orderId = CupcakeMapper.insertOrder(user.getUserId(), totalPrice, connectionPool);
+
+                // Insert order lines into the order_lines table
+                for (CartLine item : cart.getCartLines()) {
+                    CupcakeMapper.insertOrderLine(orderId, item.getTop().getId(), item.getBottom().getId(), item.getQuantity(), connectionPool);
+                }
+
+                //Withdraw from balance
+                CupcakeMapper.withdrawFromBalance(user,totalPrice,connectionPool);
+            } catch (DatabaseException e) {
+                ctx.attribute("message", e.getMessage());
+                ctx.render("index.html");
+                return;
+            }
+        }
+
+        // Clear the cart after saving the items
+        ctx.sessionAttribute("cart", null);
+
+        // Render the receipt template
         ctx.render("receipt.html");
     }
 

@@ -9,10 +9,16 @@
   <a href="index.html" th:href="@{/}">
     <img class ="logo" src="../public/images/logo.png" th:src="@{/images/logo.png}"/>
   </a>
+  <div th:if="${session.currentUser != null}">
+    <div class="user-email" th:text="${session.currentUser.email}"></div>
+  </div>
   <ul>
-    <li><a href="#">Hjem</a></li>
+    <li><a href="index.html" th:href="@{/}">Hjem</a></li>
     <li><a href="#">Login/Opret</a></li>
-    <li><a href="#">Kurv</a></li>
+    <li><a href="kurv.html" th:href="@{/cart}">Kurv</a></li>
+    <li th:if="${session != null and session.currentUser != null and session.currentUser.admin}">
+      <a href="adminpage.html" th:href="@{/adminpage}">Admin</a>
+    </li>
   </ul>
 </nav>
 

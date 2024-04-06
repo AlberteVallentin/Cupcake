@@ -20,10 +20,16 @@ public class UserController
 
         app.post("adminLogin", ctx -> adminLogin(ctx,connectionPool));
         app.get("/admin", ctx -> adminLoginPage(ctx,connectionPool));
+        app.get("/adminpage", ctx -> adminPage(ctx,connectionPool));
 
     }
 
+    private static void adminPage(Context ctx, ConnectionPool connectionPool) {
+        ctx.render("adminpage.html");
+    }
+
     private static void adminLoginPage(Context ctx, ConnectionPool connectionPool) {
+
         ctx.render("adminlogin.html");
     }
 

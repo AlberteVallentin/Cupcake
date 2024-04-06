@@ -47,7 +47,7 @@ nav li {
     position: relative;
 }
 
-nav li a {
+nav li a, .user-email {
     color: white;
     display: inline-block;
     font-weight: 100;
@@ -55,6 +55,7 @@ nav li a {
     position: relative;
     text-decoration: none;
 }
+
 
 nav a img {
     width: 25%;
