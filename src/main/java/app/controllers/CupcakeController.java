@@ -26,35 +26,37 @@ public class CupcakeController {
     }
 
     private static void showReceipt(Context ctx, ConnectionPool connectionPool) {
-
-
+        // Retrieve the current user and cart from the session
         User user = ctx.sessionAttribute("currentUser");
         Cart cart = ctx.sessionAttribute("cart");
 
+        // Check if the user is logged in and if there are items in the cart
         if (user != null && cart != null) {
             try {
-                // Calculate total price of the cart
+                // Calculate the total price of the items in the cart
                 double totalPrice = cart.getTotal();
 
-                // Insert order into the orders table
+                // Insert an order into the orders table with the user's ID and the total price
                 int orderId = CupcakeMapper.insertOrder(user.getUserId(), totalPrice, connectionPool);
 
-                // Insert order lines into the order_lines table
+                // Insert each item in the cart as an order line into the order_lines table
                 for (CartLine item : cart.getCartLines()) {
                     CupcakeMapper.insertOrderLine(orderId, item.getTop().getId(), item.getBottom().getId(), item.getQuantity(), connectionPool);
                 }
             } catch (DatabaseException e) {
+                // If there is a database exception, set an error message and render the index page
                 ctx.attribute("message", e.getMessage());
                 ctx.render("index.html");
-                return;
+                return; // Exit the method to prevent further processing
             }
         }
 
-        // Clear the cart after saving the items
+        // Clear the cart from the session after saving the items
         ctx.sessionAttribute("cart", null);
 
         // Render the receipt template
         ctx.render("receipt.html");
+        
     }
 
 

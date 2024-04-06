@@ -166,37 +166,50 @@ public class CupcakeMapper {
      */
 
     public static int insertOrder(int userId, double totalPrice, ConnectionPool connectionPool) throws DatabaseException {
+        // Define the SQL query to insert an order and return the generated order_id
         String sql = "INSERT INTO orders (user_id, total_price) VALUES (?, ?) RETURNING order_id";
 
         try (Connection conn = connectionPool.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
+            // Set the parameters for the SQL query
             stmt.setInt(1, userId);
             stmt.setDouble(2, totalPrice);
 
+            // Execute the query and retrieve the result set containing the generated order_id
             ResultSet rs = stmt.executeQuery();
+
+            // Check if the result set contains a row
             if (rs.next()) {
+                // Return the generated order_id
                 return rs.getInt("order_id");
             } else {
+                // If no row is returned, throw an exception indicating a failure to insert the order
                 throw new DatabaseException("Failed to insert order. No order ID returned.");
             }
         } catch (SQLException e) {
+            // Catch any SQL exceptions and throw a DatabaseException with an appropriate error message
             throw new DatabaseException("Error inserting order: " + e.getMessage());
         }
     }
 
     public static void insertOrderLine(int orderId, int topId, int bottomId, int quantity, ConnectionPool connectionPool) throws DatabaseException {
+        // Define the SQL query to insert an order line
         String sql = "INSERT INTO order_lines (order_id, top_id, bottom_id, amount) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = connectionPool.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
+            // Set the parameters for the SQL query
             stmt.setInt(1, orderId);
             stmt.setInt(2, topId);
             stmt.setInt(3, bottomId);
             stmt.setInt(4, quantity);
 
+            // Execute the query to insert the order line
             stmt.executeUpdate();
         } catch (SQLException e) {
+            // Catch any SQL exceptions and throw a DatabaseException with an appropriate error message
             throw new DatabaseException("Error inserting order line: " + e.getMessage());
         }
     }
+
 }
