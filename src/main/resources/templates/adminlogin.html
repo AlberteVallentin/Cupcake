@@ -18,6 +18,9 @@
         <li><a href="#">Hjem</a></li>
         <li><a href="#">Login/Opret</a></li>
         <li><a href="kurv.html" th:href="@{/cart}">Kurv</a></li>
+        <li th:if="${session != null and session.currentUser != null and session.currentUser.admin}">
+            <a href="adminpage.html" th:href="@{/adminpage}">Admin</a>
+        </li>
     </ul>
 </nav>
 
