@@ -65,6 +65,30 @@ nav a img {
     padding: 0;
 }
 
+.cart-item {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-item img {
+    width: 22px;
+    height: auto;
+}
+
+
+.cart-count {
+    position: absolute;
+    top: -22px;
+    right: -12px;
+    background-color: var(--purple-color);
+    color: white;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    padding: 2px 5px;
+
+
+}
+
 .order-container {
     max-width: 600px;
     margin: auto;

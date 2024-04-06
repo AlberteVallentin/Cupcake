@@ -10,7 +10,7 @@ import io.javalin.http.Context;
 import java.util.List;
 
 
-import static app.controllers.UserController.adminLogin;
+import static app.controllers.UserController.login;
 
 public class CupcakeController {
 

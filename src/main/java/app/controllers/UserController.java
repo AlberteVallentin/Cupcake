@@ -7,30 +7,28 @@ import app.persistence.UserMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 
-import java.util.List;
-
 public class UserController
 {
     public static void addRoutes(Javalin app, ConnectionPool connectionPool)
     {
-        app.post("login", ctx -> adminLoginPage(ctx, connectionPool));
         app.get("logout", ctx -> logout(ctx));
         app.get("createuser", ctx -> ctx.render("createuser.html"));
         app.post("createuser", ctx -> createUser(ctx, connectionPool));
 
-        app.post("adminLogin", ctx -> adminLogin(ctx,connectionPool));
-        app.get("/admin", ctx -> adminLoginPage(ctx,connectionPool));
+        app.post("/login", ctx -> login(ctx,connectionPool));
+        app.get("/admin", ctx -> loginPage(ctx,connectionPool));
         app.get("/adminpage", ctx -> adminPage(ctx,connectionPool));
 
     }
 
     private static void adminPage(Context ctx, ConnectionPool connectionPool) {
+
         ctx.render("adminpage.html");
     }
 
-    private static void adminLoginPage(Context ctx, ConnectionPool connectionPool) {
+    private static void loginPage (Context ctx, ConnectionPool connectionPool) {
 
-        ctx.render("adminlogin.html");
+        ctx.render("login.html");
     }
 
     private static void createUser(Context ctx, ConnectionPool connectionPool)
@@ -70,7 +68,7 @@ public class UserController
     }
 
 
-    public static void adminLogin(Context ctx, ConnectionPool connectionPool)
+    public static void login(Context ctx, ConnectionPool connectionPool)
     {
         // Hent form parametre
         String email = ctx.formParam("email");
@@ -93,7 +91,7 @@ public class UserController
         {
             // Hvis nej, send tilbage til login side med fejl besked
             ctx.attribute("message","Fejl i enten email eller kode");
-            ctx.render("adminlogin.html");
+            ctx.render("login.html");
         }
     }
 }
