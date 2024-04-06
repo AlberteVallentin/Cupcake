@@ -17,7 +17,8 @@
 
     <ul>
         <li><a href="index.html" th:href="@{/}">Hjem</a></li>
-        <li><a href="login.html" th:href="@{/loginpage}">Login/Opret</a></li>
+        <li><a th:if="${session.currentUser != null}" href="index.html" th:href="@{/logout}">Log ud</a></li>
+        <li><a th:if="${session.currentUser == null}" href="login.html" th:href="@{/loginpage}">Login/Opret</a></li>
         <li th:if="${session != null and session.currentUser != null and session.currentUser.admin}">
             <a href="adminpage.html" th:href="@{/adminpage}">Admin</a>
         </li>
@@ -32,6 +33,7 @@
 </nav>
 
 <h1>Login</h1>
+
 
 <div class="order-container">
     <h2>Login med din e-mail og password</h2>
@@ -52,7 +54,7 @@
     </div>
         </form>
 
-    <a href="kurv.html" th:href="@{/cart}">Har du ikke en konto? Opret en her</a>
+    <a href="opretbruger.html" th:href="@{/opretbruger}">Har du ikke en konto? Opret en her</a>
 </div>
 
 

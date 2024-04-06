@@ -11,9 +11,10 @@ public class UserController
 {
     public static void addRoutes(Javalin app, ConnectionPool connectionPool)
     {
+
+        app.get("opretbruger", ctx -> ctx.render("opretbruger.html"));
+        app.post("opretbruger", ctx -> opretBruger(ctx, connectionPool));
         app.get("logout", ctx -> logout(ctx));
-        app.get("createuser", ctx -> ctx.render("createuser.html"));
-        app.post("createuser", ctx -> createUser(ctx, connectionPool));
 
         app.post("/login", ctx -> login(ctx,connectionPool));
         app.get("/loginpage", ctx -> loginPage(ctx,connectionPool));
@@ -31,10 +32,12 @@ public class UserController
         ctx.render("login.html");
     }
 
-    private static void createUser(Context ctx, ConnectionPool connectionPool)
+
+    private static void opretBruger(Context ctx, ConnectionPool connectionPool)
     {
         // Hent form parametre
-        String username = ctx.formParam("username");
+        String name = ctx.formParam("name");
+        String email = ctx.formParam("email");
         String password1 = ctx.formParam("password1");
         String password2 = ctx.formParam("password2");
 
@@ -42,21 +45,21 @@ public class UserController
         {
             try
             {
-                UserMapper.createuser(username, password1, connectionPool);
-                ctx.attribute("message", "Du er hermed oprettet med brugernavn: " + username +
+                UserMapper.opretBruger(name, email, password1, connectionPool);
+                ctx.attribute("message", "Du er hermed oprettet med email: " + email +
                         ". Nu skal du logge på.");
-                ctx.render("index.html");
+                ctx.render("login.html");
             }
 
             catch (DatabaseException e)
             {
                 ctx.attribute("message", "Dit brugernavn findes allerede. Prøv igen, eller log ind");
-                ctx.render("createuser.html");
+                ctx.render("opretbruger.html");
             }
         } else
         {
             ctx.attribute("message", "Dine to passwords matcher ikke! Prøv igen");
-            ctx.render("createuser.html");
+            ctx.render("opretbruger.html");
         }
 
     }

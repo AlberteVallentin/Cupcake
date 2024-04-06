@@ -5,52 +5,49 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="../public/css/opretbruger.css" th:href="@{/css/opretbruger.css}" rel="stylesheet"/>
+
+<body>
 <nav>
   <a href="index.html" th:href="@{/}">
     <img class ="logo" src="../public/images/logo.png" th:src="@{/images/logo.png}"/>
   </a>
-  <div th:if="${session.currentUser != null}">
-    <div class="user-email" th:text="${session.currentUser.email}"></div>
-  </div>
   <ul>
-    <li><a href="index.html" th:href="@{/}">Hjem</a></li>
-    <li><a href="login.html" th:href="@{/loginpage}">Login/Opret</a></li>
-    <li th:if="${session != null and session.currentUser != null and session.currentUser.admin}">
-      <a href="adminpage.html" th:href="@{/adminpage}">Admin</a>
-    </li>
-    <li class="cart-item">
-      <a href="kurv.html" th:href="@{/cart}">
-        <img src="../public/images/cart.png" th:src="@{/images/cart.png}" />
-      </a>
-      <span class="cart-count" th:if="${session.cart.getTotalQuantity() > 0}" th:text="${session.cart.getTotalQuantity()}"></span>
-    </li>
-
+    <li><a href="index.html">Hjem</a></li>
+    <li><a href="adminlogin.html">Login/Opret</a></li>
+    <li><a href="kurv.html">Kurv</a></li>
   </ul>
 </nav>
 
-<div class="flexbox-container">
-  <form action="/" style="border:1px solid ">
-    <div class="container">
-      <h1 class="h1">Opret bruger</h1>
-      <hr class="line1">
+<h1>Opret en bruger</h1>
 
-      <label class="label1"><b>Indtast Email</b></label>
-      <input type="text" placeholder="Email" name="email" required>
-
-      <label class="label2"><b>Indtast Password</b></label>
-      <input type="password" placeholder="Password" name="psw" required>
-
-      <label class="label3"><b>Gentag Password</b></label>
-      <input type="password" placeholder="Password" name="psw-repeat" required>
-
-      <div class="btn1">
-        <button type="submit" class="opretbtn">Opret Bruger</button>
-        </div>
-      <div class="btn2">
-        <button type="button" class="afbrydbtn">Afbryd</button>
-        </div>
+<div class="order-container">
+  <h2>Opret en bruger for at bestille din ordre</h2>
+  <form class="generic-form" method="post">
+    <div class="dropdown-container">
+      <div class="dropdown">
+        <input name="name" placeholder="Indtast navn" type="text">
       </div>
+      <div class="dropdown">
+        <input name="email" placeholder="Indtast email" type="text">
+      </div>
+      <div class="dropdown">
+        <input name="password1" placeholder="Indtast password" type="password">
+      </div>
+      <div class="dropdown">
+        <input name="password2" placeholder="Gentag Password" type="password">
+      </div>
+    </div>
+    <div class="button-container">
+      <div class="dropdown">
+
+        <button type="submit" formaction="/opretbruger">Opret bruger</button>
+        <div> <p th:text="${message}"></p> </div>
+      </div>
+    </div>
   </form>
+  <a href="login.html" th:href="@{/loginpage}">Har du allerede en konto? Login her</a>
+</div>
 </div>
 
+</body>
 </html>
