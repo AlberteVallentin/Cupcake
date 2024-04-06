@@ -16,7 +16,7 @@ public class UserController
         app.post("login", ctx -> adminLoginPage(ctx, connectionPool));
         app.get("logout", ctx -> logout(ctx));
         app.get("opretbruger", ctx -> ctx.render("opretbruger.html"));
-        app.post("opretbruger", ctx -> opretBruger(ctx, connectionPool));
+        app.post("/opretbruger", ctx -> opretBruger(ctx, connectionPool));
 
         app.post("adminLogin", ctx -> adminLogin(ctx,connectionPool));
         app.get("/admin", ctx -> adminLoginPage(ctx,connectionPool));
@@ -30,6 +30,7 @@ public class UserController
     private static void opretBruger(Context ctx, ConnectionPool connectionPool)
     {
         // Hent form parametre
+        String name = ctx.formParam("name");
         String email = ctx.formParam("email");
         String password1 = ctx.formParam("password1");
         String password2 = ctx.formParam("password2");
@@ -38,8 +39,8 @@ public class UserController
         {
             try
             {
-                UserMapper.opretBruger(email, password1, connectionPool);
-                ctx.attribute("message", "Du er hermed oprettet med brugernavn: " + email +
+                UserMapper.opretBruger(name, email, password1, connectionPool);
+                ctx.attribute("message", "Du er hermed oprettet med email: " + email +
                         ". Nu skal du logge på.");
                 ctx.render("adminlogin.html");
             }
