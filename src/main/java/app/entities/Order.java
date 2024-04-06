@@ -1,12 +1,12 @@
 package app.entities;
 public class Order {
 private int orderId;
-private int costumerId;
+private int userId;
 private double totalPrice;
 
-    public Order(int orderId, int costumerId, double totalPrice) {
+    public Order(int orderId, int userId, double totalPrice) {
         this.orderId = orderId;
-        this.costumerId = costumerId;
+        this.userId = userId;
         this.totalPrice = totalPrice;
     }
 
@@ -14,8 +14,8 @@ private double totalPrice;
         return orderId;
     }
 
-    public int getCostumerId() {
-        return costumerId;
+    public int getUserId() {
+        return userId;
     }
 
     public double getTotalPrice() {

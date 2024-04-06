@@ -18,15 +18,20 @@ public class CupcakeController {
         app.get("/", ctx -> index(ctx, connectionPool));
         app.post("/addtocart", ctx -> addToCart(ctx, connectionPool));
         app.get("/cart", ctx -> cart(ctx, connectionPool));
-        app.post("/createordre", ctx -> createordre(ctx,connectionPool));
+        app.post("/receipt", ctx->showReceipt(ctx,connectionPool) );
+
+
       //  app.post("deleteorder", ctx -> deleteorder(ctx,false,connectionPool));
 
     }
 
+    private static void showReceipt(Context ctx, ConnectionPool connectionPool) {
 
-    private static void createordre(Context ctx, ConnectionPool connectionPool) {
-
+        ctx.render("receipt.html");
     }
+
+
+
 /*
     private static void deleteorder(Context ctx, boolean b, ConnectionPool connectionPool) {
 

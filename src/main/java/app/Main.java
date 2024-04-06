@@ -26,6 +26,6 @@ public class Main
         // Routing
 
         CupcakeController.addRoutes(app, connectionPool);
-        UserController.addRoutes(app, connectionPool);
+        UserController.addRoutes(app,connectionPool);
     }
 }

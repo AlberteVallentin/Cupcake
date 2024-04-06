@@ -29,12 +29,12 @@ public class UserMapper
             ResultSet rs = ps.executeQuery();
             if (rs.next())
             {
-                int id = rs.getInt("id");
+                int userId = rs.getInt("user_id");
                 String name = rs.getString("name");
                 boolean admin = rs.getBoolean("admin");
                 double balance = rs.getDouble("balance");
 
-                return new User(id, name, password, email, admin, balance);
+                return new User(userId, name, password, email, admin, balance);
             } else
             {
                 throw new DatabaseException("Fejl i login. Prøv igen");
