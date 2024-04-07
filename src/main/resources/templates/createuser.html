@@ -4,7 +4,7 @@
 <title>Frontpage</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="../public/css/login.css" th:href="@{/css/login.css}" rel="stylesheet"/>
+<link href="../public/css/createuser.css" th:href="@{/css/createuser.css}" rel="stylesheet"/>
 
 <body>
 <nav>
@@ -32,28 +32,35 @@
     </ul>
 </nav>
 
-<h1>Login</h1>
-<div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
+<h1>Opret bruger</h1>
+
 <div class="order-container">
-    <h2>Login med din e-mail og password</h2>
+    <h2>Skriv din e-mail og et password </h2>
     <form class="generic-form" method="post">
-    <div class="dropdown-container">
-        <div class="dropdown">
-            <input name="email" placeholder="E-mail" type="text">
+        <div class="dropdown-container">
+            <div class="dropdown">
+                <input type="text" name="name" placeholder="Navn" >
+            </div>
+            <div class="dropdown">
+                <input type="text" name="email" placeholder="E-mail" >
+            </div>
+            <div class="dropdown">
+                <input type="password" name="password1" placeholder="Password" >
+            </div>
+            <div class="dropdown">
+                <input type="password" name="password2" placeholder="Gentag dit password" >
+            </div>
         </div>
-        <div class="dropdown">
-            <input name="password" placeholder="Password" type="password">
-        </div>
-    </div>
-    <div class="button-container">
-        <div class="dropdown">
+        <div class="button-container">
+            <div class="dropdown">
 
-                <button type="submit" formaction="/login">Login</button>
+                <button type="submit" formaction="/createuser">Opret bruger</button>
+                <div><p th:text="${message}"></p></div>
+            </div>
         </div>
-    </div>
-        </form>
+    </form>
 
-    <a href="createuser.html" th:href="@{/createuser}">Har du ikke en konto? Opret en her</a>
+    <a href="login.html" th:href="@{/login}">Har du allerede en konto? Login her</a>
 </div>
 
 

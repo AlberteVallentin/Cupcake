@@ -11,7 +11,6 @@ import java.sql.SQLException;
 public class UserMapper
 {
 
-   // public static User login(String userName, String password, ConnectionPool connectionPool) throws DatabaseException
 
     public static User adminLoginCheck(String email, String password, ConnectionPool connectionPool) throws DatabaseException
 
@@ -46,17 +45,18 @@ public class UserMapper
         }
     }
 
-    public static void createuser(String userName, String password, ConnectionPool connectionPool) throws DatabaseException
+    public static void createuser(String name, String email, String password, ConnectionPool connectionPool) throws DatabaseException
     {
-        String sql = "insert into users (username, password) values (?,?)";
+        String sql = "insert into users (name, email, password) values (?,?,?)";
 
         try (
                 Connection connection = connectionPool.getConnection();
                 PreparedStatement ps = connection.prepareStatement(sql)
         )
         {
-            ps.setString(1, userName);
-            ps.setString(2, password);
+            ps.setString(1, name);
+            ps.setString(2, email);
+            ps.setString(3, password);
 
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected != 1)
