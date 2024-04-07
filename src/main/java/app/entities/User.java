@@ -15,7 +15,6 @@ public class User {
         this.email = email;
         this.admin = admin;
         this.balance = balance;
-
     }
 
     public String getEmail() {

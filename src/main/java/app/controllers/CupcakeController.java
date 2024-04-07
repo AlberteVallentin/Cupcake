@@ -20,10 +20,10 @@ public class CupcakeController {
         app.get("/cart", ctx -> cart(ctx, connectionPool));
         app.post("/receipt", ctx->showReceipt(ctx,connectionPool) );
 
-
       //  app.post("deleteorder", ctx -> deleteorder(ctx,false,connectionPool));
 
     }
+
 
     private static void showReceipt(Context ctx, ConnectionPool connectionPool) {
 
@@ -85,6 +85,8 @@ public class CupcakeController {
     private static void cart(Context ctx, ConnectionPool connectionPool) {
         ctx.render("kurv.html");
     }
+
+
 
 
 

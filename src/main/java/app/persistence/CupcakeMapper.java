@@ -17,6 +17,32 @@ import java.util.HashMap;
 import java.util.List;
 
 public class CupcakeMapper {
+    public static List<User> getAllUsers(ConnectionPool connectionPool) {
+        String sql = "SELECT * FROM users";
+        List<User> userList = new ArrayList<>();
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql);
+        ) {
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                int userId = rs.getInt("user_id");
+                String name = rs.getString("name");
+                String password = rs.getString("password");
+                String email = rs.getString("email");
+                boolean admin = rs.getBoolean("admin");
+                double balance = rs.getDouble("balance");
+
+                User user = new User(userId, name, password, email, admin, balance);
+                userList.add(user);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return userList;
+    }
 
     public static List<Top> getAllTops(ConnectionPool connectionPool) {
         String sql = "SELECT * FROM top";
@@ -40,8 +66,6 @@ public class CupcakeMapper {
             throw new RuntimeException(e);
         }
         return topList;
-
-
     }
 
     public static Top getTopById(int id, ConnectionPool connectionPool) {
@@ -137,6 +161,38 @@ public class CupcakeMapper {
                 ps02.setInt(2, user.getUserId());
                 ps02.executeUpdate();
 
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+    public static void depositToBalance(int userId, double depositAmount, ConnectionPool connectionPool) {
+
+        String sql = "SELECT * from users where user_id=?";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql);
+        ) {
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                double currentBalance = rs.getInt("balance");
+                double newBalance = currentBalance + depositAmount;
+                if (0 > depositAmount) {
+                    System.out.println("Du kan ikke trække penge fra kunden");
+
+                }
+                String updatesql = "update users set balance=? where user_id=?";
+                PreparedStatement ps02 = connection.prepareStatement(updatesql);
+                ps02.setDouble(1, newBalance);
+                ps02.setInt(2, userId);
+                ps02.executeUpdate();
             }
 
         } catch (SQLException e) {

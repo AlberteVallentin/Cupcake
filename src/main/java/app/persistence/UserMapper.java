@@ -75,4 +75,5 @@ public class UserMapper
             throw new DatabaseException(msg, e.getMessage());
         }
     }
+
 }
