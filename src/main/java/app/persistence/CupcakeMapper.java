@@ -41,6 +41,7 @@ public class CupcakeMapper {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        System.out.println(userList);
         return userList;
     }
 
