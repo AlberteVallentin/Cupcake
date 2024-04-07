@@ -17,6 +17,32 @@ import java.util.HashMap;
 import java.util.List;
 
 public class CupcakeMapper {
+    public static List<User> getAllUsers(ConnectionPool connectionPool) {
+        String sql = "SELECT * FROM users";
+        List<User> userList = new ArrayList<>();
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql);
+        ) {
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                int userId = rs.getInt("user_id");
+                String name = rs.getString("name");
+                String password = rs.getString("password");
+                String email = rs.getString("email");
+                boolean admin = rs.getBoolean("admin");
+                double balance = rs.getDouble("balance");
+
+                User user = new User(userId, name, password, email, admin, balance);
+                userList.add(user);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return userList;
+    }
 
     public static List<Top> getAllTops(ConnectionPool connectionPool) {
         String sql = "SELECT * FROM top";
@@ -40,8 +66,6 @@ public class CupcakeMapper {
             throw new RuntimeException(e);
         }
         return topList;
-
-
     }
 
     public static Top getTopById(int id, ConnectionPool connectionPool) {

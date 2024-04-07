@@ -86,6 +86,11 @@ public class CupcakeController {
         ctx.render("kurv.html");
     }
 
+    private static void getAllUsers(Context ctx, ConnectionPool connectionPool){
+        List<User> userList = CupcakeMapper.getAllUsers(connectionPool);
+        ctx.attribute("userList", userList);
+    }
+
 
 
     private static void addToCart(Context ctx, ConnectionPool connectionPool) {
