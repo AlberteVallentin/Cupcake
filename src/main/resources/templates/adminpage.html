@@ -41,12 +41,13 @@
     <form method="post">
         <div class="dropdown-container">
             <div class="dropdown">
-                <select name="costumer">
+                <select name="userList">
+
                     <option>Vælg kunde</option>
                     <option th:each="user: ${userList}"
-                            th:value="${user.id}"
+                            th:value="${user.userId}"
                             th:text="${user.email +' (' + user.balance + ')'}"
-                            value="1">
+                            value="1">Email
                     </option>
                 </select>
             </div>
@@ -56,7 +57,7 @@
         </div>
         <div class="button-container">
             <div class="dropdown">
-                <button type="submit" formaction="/login">Fuldfør</button>
+                <button type="submit" formaction="/addMoney">Fuldfør</button>
             </div>
         </div>
 

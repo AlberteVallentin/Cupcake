@@ -3,9 +3,12 @@ package app.controllers;
 import app.entities.User;
 import app.exceptions.DatabaseException;
 import app.persistence.ConnectionPool;
+import app.persistence.CupcakeMapper;
 import app.persistence.UserMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
+
+import java.util.List;
 
 public class UserController
 {
@@ -20,10 +23,27 @@ public class UserController
         app.get("/loginpage", ctx -> loginPage(ctx,connectionPool));
         app.get("/adminpage", ctx -> adminPage(ctx,connectionPool));
 
+        app.post("/addMoney", ctx -> addMoney(ctx,connectionPool));
+
+    }
+
+    private static void addMoney(Context ctx, ConnectionPool connectionPool) {
+        List<User> userList = CupcakeMapper.getAllUsers(connectionPool);
+
+        int userId = Integer.parseInt(ctx.formParam("userList"));
+
+        double amount = Double.parseDouble(ctx.formParam("amount"));
+
+        CupcakeMapper.depositToBalance(userId, amount, connectionPool);
+
+        userList = CupcakeMapper.getAllUsers(connectionPool);
+
+        ctx.attribute("userList", userList);
+        ctx.render("adminpage.html");
+
     }
 
     private static void adminPage(Context ctx, ConnectionPool connectionPool) {
-
         ctx.render("adminpage.html");
     }
 
@@ -83,6 +103,8 @@ public class UserController
             ctx.sessionAttribute("currentUser", user);
             // Hvis ja, send videre til admin page
             if(user.getAdmin()) {
+                List<User> userList = CupcakeMapper.getAllUsers(connectionPool);
+                ctx.attribute("userList", userList);
                 ctx.render("adminpage.html");
             }
             else{

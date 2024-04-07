@@ -20,16 +20,10 @@ public class CupcakeController {
         app.get("/cart", ctx -> cart(ctx, connectionPool));
         app.post("/receipt", ctx->showReceipt(ctx,connectionPool) );
 
-        app.get("/userList", ctx-> getAllUsers(ctx,connectionPool));
-
-
       //  app.post("deleteorder", ctx -> deleteorder(ctx,false,connectionPool));
 
     }
-    private static void getAllUsers(Context ctx, ConnectionPool connectionPool){
-        List<User> userList = CupcakeMapper.getAllUsers(connectionPool);
-        ctx.attribute("userList", userList);
-    }
+
 
     private static void showReceipt(Context ctx, ConnectionPool connectionPool) {
 

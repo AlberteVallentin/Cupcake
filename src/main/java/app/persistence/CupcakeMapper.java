@@ -41,7 +41,6 @@ public class CupcakeMapper {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(userList);
         return userList;
     }
 
@@ -162,6 +161,38 @@ public class CupcakeMapper {
                 ps02.setInt(2, user.getUserId());
                 ps02.executeUpdate();
 
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+    public static void depositToBalance(int userId, double depositAmount, ConnectionPool connectionPool) {
+
+        String sql = "SELECT * from users where user_id=?";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql);
+        ) {
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                double currentBalance = rs.getInt("balance");
+                double newBalance = currentBalance + depositAmount;
+                if (0 > depositAmount) {
+                    System.out.println("Du kan ikke trække penge fra kunden");
+
+                }
+                String updatesql = "update users set balance=? where user_id=?";
+                PreparedStatement ps02 = connection.prepareStatement(updatesql);
+                ps02.setDouble(1, newBalance);
+                ps02.setInt(2, userId);
+                ps02.executeUpdate();
             }
 
         } catch (SQLException e) {
