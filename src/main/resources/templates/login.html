@@ -34,6 +34,8 @@
 
 <h1>Login</h1>
 
+<div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
+
 <div class="order-container">
     <h2>Login med din e-mail og password</h2>
     <form class="generic-form" method="post">
@@ -53,7 +55,7 @@
     </div>
         </form>
 
-    <a href="kurv.html" th:href="@{/cart}">Har du ikke en konto? Opret en her</a>
+    <a href="opretbruger.html" th:href="@{/opretbruger}">Har du ikke en konto? Opret en her</a>
 </div>
 
 
