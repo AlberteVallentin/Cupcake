@@ -77,13 +77,19 @@ h2 {
 
 .dropdown-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
     margin-bottom: 20px;
+    gap: 20px;
 }
 .button-container {
     display: flex;
+
     justify-content: center;
     margin-bottom: 20px;
+
 }
 
 .dropdown {
