@@ -46,14 +46,14 @@ public class UserController
             try
             {
                 UserMapper.opretBruger(name, email, password1, connectionPool);
-                ctx.attribute("message", "Du er hermed oprettet med email: " + email +
+                ctx.attribute("message", "Du er hermed oprettet med e-mailen: " + email +
                         ". Nu skal du logge på.");
                 ctx.render("login.html");
             }
 
             catch (DatabaseException e)
             {
-                ctx.attribute("message", "Dit brugernavn findes allerede. Prøv igen, eller log ind");
+                ctx.attribute("message", "Din e-mail findes allerede. Prøv igen, eller log ind");
                 ctx.render("opretbruger.html");
             }
         } else
