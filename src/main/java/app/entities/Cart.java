@@ -1,4 +1,5 @@
 package app.entities;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,26 +11,25 @@ public class Cart {
         return cartLines;
     }
 
-    public void add (Top top, Bottom bottom, int quantity){
+    public void add(Top top, Bottom bottom, int quantity) {
 
-        CartLine cartLine= new CartLine(top, bottom, quantity);
+        CartLine cartLine = new CartLine(top, bottom, quantity);
         cartLines.add(cartLine);
 
     }
 
 
+    public int getTotal() {
 
-    public int getTotal(){
+        int sum = 0;
 
-        int sum=0;
+        for (CartLine cartline : cartLines) {
 
-        for (CartLine cartline : cartLines){
-
-            sum+=(cartline.getTop().getPrice()  +   cartline.getBottom().getPrice()) * cartline.getQuantity();
+            sum += (cartline.getTop().getPrice() + cartline.getBottom().getPrice()) * cartline.getQuantity();
 
         }
 
-           return sum;
+        return sum;
     }
 
     public int getTotalQuantity() {
@@ -40,8 +40,7 @@ public class Cart {
         return totalQuantity;
     }
 
-    public int cartCount()
-    {
+    public int cartCount() {
 
         return cartLines.size();
     }

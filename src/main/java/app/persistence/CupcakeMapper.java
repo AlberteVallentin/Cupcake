@@ -117,7 +117,7 @@ public class CupcakeMapper {
 
     public static Bottom getBottomById(int id, ConnectionPool connectionPool) {
         String sql = "SELECT * FROM bottom WHERE bottom_id = ?";
-       Bottom bottom = null;
+        Bottom bottom = null;
 
         try (
                 Connection connection = connectionPool.getConnection();
