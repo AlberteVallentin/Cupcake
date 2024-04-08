@@ -44,6 +44,7 @@
 <div class="order-container">
     <h2>Bestil dine cupcakes</h2>
     <form method="post">
+        <div> <p th:text="${message}"></p> </div>
         <div class="dropdown-container">
             <div class="dropdown">
                 <select name="top" >
@@ -74,6 +75,7 @@
                 <button type="submit" formaction="/addtocart">Læg i kurv</button>
             </div>
         </div>
+
     </form>
 
     <a href="kurv.html" th:href="@{/cart}">Til kurv</a>
