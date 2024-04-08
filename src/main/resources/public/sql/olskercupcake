@@ -5,7 +5,7 @@
 -- Dumped from database version 16.2 (Debian 16.2-1.pgdg120+2)
 -- Dumped by pg_dump version 16.1
 
--- Started on 2024-04-05 16:29:45 UTC
+-- Started on 2024-04-08 07:55:49 UTC
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -29,7 +29,7 @@ CREATE SCHEMA public;
 ALTER SCHEMA public OWNER TO pg_database_owner;
 
 --
--- TOC entry 3400 (class 0 OID 0)
+-- TOC entry 3402 (class 0 OID 0)
 -- Dependencies: 4
 -- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: pg_database_owner
 --
@@ -42,7 +42,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 215 (class 1259 OID 17257)
+-- TOC entry 215 (class 1259 OID 16617)
 -- Name: bottom; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -56,7 +56,7 @@ CREATE TABLE public.bottom (
 ALTER TABLE public.bottom OWNER TO postgres;
 
 --
--- TOC entry 216 (class 1259 OID 17262)
+-- TOC entry 216 (class 1259 OID 16622)
 -- Name: bottom_bottom_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -72,7 +72,7 @@ CREATE SEQUENCE public.bottom_bottom_id_seq
 ALTER SEQUENCE public.bottom_bottom_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3401 (class 0 OID 0)
+-- TOC entry 3403 (class 0 OID 0)
 -- Dependencies: 216
 -- Name: bottom_bottom_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -81,7 +81,7 @@ ALTER SEQUENCE public.bottom_bottom_id_seq OWNED BY public.bottom.bottom_id;
 
 
 --
--- TOC entry 217 (class 1259 OID 17263)
+-- TOC entry 217 (class 1259 OID 16623)
 -- Name: order_lines; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -97,7 +97,7 @@ CREATE TABLE public.order_lines (
 ALTER TABLE public.order_lines OWNER TO postgres;
 
 --
--- TOC entry 218 (class 1259 OID 17266)
+-- TOC entry 218 (class 1259 OID 16626)
 -- Name: order_lines_order_line_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -113,7 +113,7 @@ CREATE SEQUENCE public.order_lines_order_line_id_seq
 ALTER SEQUENCE public.order_lines_order_line_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3402 (class 0 OID 0)
+-- TOC entry 3404 (class 0 OID 0)
 -- Dependencies: 218
 -- Name: order_lines_order_line_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -122,7 +122,7 @@ ALTER SEQUENCE public.order_lines_order_line_id_seq OWNED BY public.order_lines.
 
 
 --
--- TOC entry 219 (class 1259 OID 17267)
+-- TOC entry 219 (class 1259 OID 16627)
 -- Name: orders; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -136,7 +136,7 @@ CREATE TABLE public.orders (
 ALTER TABLE public.orders OWNER TO postgres;
 
 --
--- TOC entry 220 (class 1259 OID 17270)
+-- TOC entry 220 (class 1259 OID 16630)
 -- Name: orders_order_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -152,7 +152,7 @@ CREATE SEQUENCE public.orders_order_id_seq
 ALTER SEQUENCE public.orders_order_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3403 (class 0 OID 0)
+-- TOC entry 3405 (class 0 OID 0)
 -- Dependencies: 220
 -- Name: orders_order_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -161,7 +161,7 @@ ALTER SEQUENCE public.orders_order_id_seq OWNED BY public.orders.order_id;
 
 
 --
--- TOC entry 221 (class 1259 OID 17271)
+-- TOC entry 221 (class 1259 OID 16631)
 -- Name: top; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -175,7 +175,7 @@ CREATE TABLE public.top (
 ALTER TABLE public.top OWNER TO postgres;
 
 --
--- TOC entry 222 (class 1259 OID 17274)
+-- TOC entry 222 (class 1259 OID 16634)
 -- Name: top_top_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -191,7 +191,7 @@ CREATE SEQUENCE public.top_top_id_seq
 ALTER SEQUENCE public.top_top_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3404 (class 0 OID 0)
+-- TOC entry 3406 (class 0 OID 0)
 -- Dependencies: 222
 -- Name: top_top_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -200,7 +200,7 @@ ALTER SEQUENCE public.top_top_id_seq OWNED BY public.top.top_id;
 
 
 --
--- TOC entry 223 (class 1259 OID 17275)
+-- TOC entry 223 (class 1259 OID 16635)
 -- Name: users; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -217,7 +217,7 @@ CREATE TABLE public.users (
 ALTER TABLE public.users OWNER TO postgres;
 
 --
--- TOC entry 224 (class 1259 OID 17278)
+-- TOC entry 224 (class 1259 OID 16638)
 -- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -233,7 +233,7 @@ CREATE SEQUENCE public.user_id_seq
 ALTER SEQUENCE public.user_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3405 (class 0 OID 0)
+-- TOC entry 3407 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -242,7 +242,7 @@ ALTER SEQUENCE public.user_id_seq OWNED BY public.users.user_id;
 
 
 --
--- TOC entry 3223 (class 2604 OID 17279)
+-- TOC entry 3223 (class 2604 OID 16639)
 -- Name: bottom bottom_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -250,7 +250,7 @@ ALTER TABLE ONLY public.bottom ALTER COLUMN bottom_id SET DEFAULT nextval('publi
 
 
 --
--- TOC entry 3224 (class 2604 OID 17280)
+-- TOC entry 3224 (class 2604 OID 16640)
 -- Name: order_lines order_line_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -258,7 +258,7 @@ ALTER TABLE ONLY public.order_lines ALTER COLUMN order_line_id SET DEFAULT nextv
 
 
 --
--- TOC entry 3225 (class 2604 OID 17281)
+-- TOC entry 3225 (class 2604 OID 16641)
 -- Name: orders order_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -266,7 +266,7 @@ ALTER TABLE ONLY public.orders ALTER COLUMN order_id SET DEFAULT nextval('public
 
 
 --
--- TOC entry 3226 (class 2604 OID 17282)
+-- TOC entry 3226 (class 2604 OID 16642)
 -- Name: top top_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -274,7 +274,7 @@ ALTER TABLE ONLY public.top ALTER COLUMN top_id SET DEFAULT nextval('public.top_
 
 
 --
--- TOC entry 3227 (class 2604 OID 17283)
+-- TOC entry 3227 (class 2604 OID 16643)
 -- Name: users user_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -282,7 +282,7 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 
 
 --
--- TOC entry 3385 (class 0 OID 17257)
+-- TOC entry 3387 (class 0 OID 16617)
 -- Dependencies: 215
 -- Data for Name: bottom; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -295,23 +295,35 @@ INSERT INTO public.bottom VALUES (5, 'Almond', 7);
 
 
 --
--- TOC entry 3387 (class 0 OID 17263)
+-- TOC entry 3389 (class 0 OID 16623)
 -- Dependencies: 217
 -- Data for Name: order_lines; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public.order_lines VALUES (1, 1, 1, 1, 6);
+INSERT INTO public.order_lines VALUES (2, 2, 1, 1, 13);
+INSERT INTO public.order_lines VALUES (3, 3, 1, 1, 4);
+INSERT INTO public.order_lines VALUES (4, 4, 1, 1, 1);
+INSERT INTO public.order_lines VALUES (5, 5, 1, 1, 2);
+INSERT INTO public.order_lines VALUES (6, 6, 1, 1, 2);
 
 
 --
--- TOC entry 3389 (class 0 OID 17267)
+-- TOC entry 3391 (class 0 OID 16627)
 -- Dependencies: 219
 -- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public.orders VALUES (1, 1, 84);
+INSERT INTO public.orders VALUES (2, 1, 182);
+INSERT INTO public.orders VALUES (3, 1, 56);
+INSERT INTO public.orders VALUES (4, 1, 14);
+INSERT INTO public.orders VALUES (5, 1, 28);
+INSERT INTO public.orders VALUES (6, 1, 28);
 
 
 --
--- TOC entry 3391 (class 0 OID 17271)
+-- TOC entry 3393 (class 0 OID 16631)
 -- Dependencies: 221
 -- Data for Name: top; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -328,19 +340,20 @@ INSERT INTO public.top VALUES (9, 'Blue cheese', 5);
 
 
 --
--- TOC entry 3393 (class 0 OID 17275)
+-- TOC entry 3395 (class 0 OID 16635)
 -- Dependencies: 223
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.users VALUES (1, 'Malte Pavón Olesen', '1234', 'malte@hotmail.com', false, 10000);
 INSERT INTO public.users VALUES (2, 'Kamilla', '1234', 'kamilla@hotmail.com', NULL, 10000);
 INSERT INTO public.users VALUES (3, 'Alfredo Moises Fernandez', '1234', 'alfredo@hotmail.com', true, 10000);
 INSERT INTO public.users VALUES (4, 'Alberte', '1234', 'alberte@hotmail.com', false, 10000);
+INSERT INTO public.users VALUES (1, 'Malte Pavón Olesen', '1234', 'malte@hotmail.com', false, 9692);
+INSERT INTO public.users VALUES (6, 'test', '1234', 'test@test.dk', NULL, NULL);
 
 
 --
--- TOC entry 3406 (class 0 OID 0)
+-- TOC entry 3408 (class 0 OID 0)
 -- Dependencies: 216
 -- Name: bottom_bottom_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -349,25 +362,25 @@ SELECT pg_catalog.setval('public.bottom_bottom_id_seq', 5, true);
 
 
 --
--- TOC entry 3407 (class 0 OID 0)
+-- TOC entry 3409 (class 0 OID 0)
 -- Dependencies: 218
 -- Name: order_lines_order_line_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.order_lines_order_line_id_seq', 1, false);
+SELECT pg_catalog.setval('public.order_lines_order_line_id_seq', 6, true);
 
 
 --
--- TOC entry 3408 (class 0 OID 0)
+-- TOC entry 3410 (class 0 OID 0)
 -- Dependencies: 220
 -- Name: orders_order_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.orders_order_id_seq', 1, false);
+SELECT pg_catalog.setval('public.orders_order_id_seq', 6, true);
 
 
 --
--- TOC entry 3409 (class 0 OID 0)
+-- TOC entry 3411 (class 0 OID 0)
 -- Dependencies: 222
 -- Name: top_top_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -376,16 +389,16 @@ SELECT pg_catalog.setval('public.top_top_id_seq', 9, true);
 
 
 --
--- TOC entry 3410 (class 0 OID 0)
+-- TOC entry 3412 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.user_id_seq', 4, true);
+SELECT pg_catalog.setval('public.user_id_seq', 13, true);
 
 
 --
--- TOC entry 3229 (class 2606 OID 17285)
+-- TOC entry 3229 (class 2606 OID 16645)
 -- Name: bottom bottom_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -394,7 +407,16 @@ ALTER TABLE ONLY public.bottom
 
 
 --
--- TOC entry 3231 (class 2606 OID 17287)
+-- TOC entry 3237 (class 2606 OID 16677)
+-- Name: users email_unique; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT email_unique UNIQUE (email);
+
+
+--
+-- TOC entry 3231 (class 2606 OID 16647)
 -- Name: order_lines order_lines_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -403,7 +425,7 @@ ALTER TABLE ONLY public.order_lines
 
 
 --
--- TOC entry 3233 (class 2606 OID 17289)
+-- TOC entry 3233 (class 2606 OID 16649)
 -- Name: orders orders_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -412,7 +434,7 @@ ALTER TABLE ONLY public.orders
 
 
 --
--- TOC entry 3235 (class 2606 OID 17291)
+-- TOC entry 3235 (class 2606 OID 16651)
 -- Name: top top_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -421,7 +443,7 @@ ALTER TABLE ONLY public.top
 
 
 --
--- TOC entry 3237 (class 2606 OID 17293)
+-- TOC entry 3239 (class 2606 OID 16653)
 -- Name: users user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -430,7 +452,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 3238 (class 2606 OID 17294)
+-- TOC entry 3240 (class 2606 OID 16654)
 -- Name: order_lines bottom_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -439,7 +461,7 @@ ALTER TABLE ONLY public.order_lines
 
 
 --
--- TOC entry 3241 (class 2606 OID 17299)
+-- TOC entry 3243 (class 2606 OID 16659)
 -- Name: orders costumer_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -448,7 +470,7 @@ ALTER TABLE ONLY public.orders
 
 
 --
--- TOC entry 3239 (class 2606 OID 17304)
+-- TOC entry 3241 (class 2606 OID 16664)
 -- Name: order_lines order_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -457,7 +479,7 @@ ALTER TABLE ONLY public.order_lines
 
 
 --
--- TOC entry 3240 (class 2606 OID 17309)
+-- TOC entry 3242 (class 2606 OID 16669)
 -- Name: order_lines top_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -465,7 +487,7 @@ ALTER TABLE ONLY public.order_lines
     ADD CONSTRAINT top_id FOREIGN KEY (top_id) REFERENCES public.top(top_id) NOT VALID;
 
 
--- Completed on 2024-04-05 16:29:45 UTC
+-- Completed on 2024-04-08 07:55:49 UTC
 
 --
 -- PostgreSQL database dump complete
