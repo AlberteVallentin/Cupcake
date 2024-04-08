@@ -23,8 +23,7 @@ public class CartLine {
         return quantity;
     }
 
-    public int getTotal()
-    {
+    public int getTotal() {
         return (top.getPrice() + bottom.getPrice()) * quantity;
     }
 }

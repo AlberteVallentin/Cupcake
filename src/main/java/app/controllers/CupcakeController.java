@@ -7,6 +7,7 @@ import app.persistence.CupcakeMapper;
 import app.persistence.UserMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
+
 import java.util.List;
 
 
@@ -18,16 +19,14 @@ public class CupcakeController {
         app.get("/", ctx -> index(ctx, connectionPool));
         app.post("/addtocart", ctx -> addToCart(ctx, connectionPool));
         app.get("/cart", ctx -> cart(ctx, connectionPool));
-        app.post("/receipt", ctx->showReceipt(ctx,connectionPool) );
+        app.post("/receipt", ctx -> showReceipt(ctx, connectionPool));
 
-      //  app.post("deleteorder", ctx -> deleteorder(ctx,false,connectionPool));
+        //  app.post("deleteorder", ctx -> deleteorder(ctx,false,connectionPool));
 
     }
 
 
     private static void showReceipt(Context ctx, ConnectionPool connectionPool) {
-
-
         User user = ctx.sessionAttribute("currentUser");
         Cart cart = ctx.sessionAttribute("cart");
 
@@ -45,7 +44,7 @@ public class CupcakeController {
                 }
 
                 //Withdraw from balance
-                CupcakeMapper.withdrawFromBalance(user,totalPrice,connectionPool);
+                CupcakeMapper.withdrawFromBalance(user, totalPrice, connectionPool);
             } catch (DatabaseException e) {
                 ctx.attribute("message", e.getMessage());
                 ctx.render("index.html");
@@ -89,59 +88,58 @@ public class CupcakeController {
 
 
 
-
     private static void addToCart(Context ctx, ConnectionPool connectionPool) {
 
-            User user = ctx.sessionAttribute("currentUser");
-            try {
-                int topId = Integer.parseInt(ctx.formParam("top"));
-                int bottomId = Integer.parseInt(ctx.formParam("bottom"));
-                int quantity = Integer.parseInt(ctx.formParam("quantity"));
+        User user = ctx.sessionAttribute("currentUser");
+        try {
+            int topId = Integer.parseInt(ctx.formParam("top"));
+            int bottomId = Integer.parseInt(ctx.formParam("bottom"));
+            int quantity = Integer.parseInt(ctx.formParam("quantity"));
 
-                Top top = CupcakeMapper.getTopById(topId, connectionPool);
-                Bottom bottom = CupcakeMapper.getBottomById(bottomId, connectionPool);
+            Top top = CupcakeMapper.getTopById(topId, connectionPool);
+            Bottom bottom = CupcakeMapper.getBottomById(bottomId, connectionPool);
 
-                Cart cart = ctx.sessionAttribute("cart");
-                if (cart == null)
-                {
-                    cart = new Cart();
-                }
-
-                cart.add(top, bottom, quantity);
-                ctx.sessionAttribute("cart", cart);
-                List<Top> topList = CupcakeMapper.getAllTops(connectionPool);
-                List<Bottom> bottomList = CupcakeMapper.getAllBottoms(connectionPool);
-                ctx.attribute("topList", topList);
-                ctx.attribute("bottomList", bottomList);
-                ctx.render("index.html");
-
-            } catch (NumberFormatException e) {
-                ctx.attribute("message", e.getMessage());
-                ctx.render("index.html");
-            }
-        }
-        private static void index(Context ctx, ConnectionPool connectionPool) {
-            User user = ctx.sessionAttribute("currentUser");
             Cart cart = ctx.sessionAttribute("cart");
             if (cart == null) {
                 cart = new Cart();
-                ctx.sessionAttribute("cart", cart);
-            }
-            try {
-                List<Top> topList = CupcakeMapper.getAllTops(connectionPool);
-                List<Bottom> bottomList = CupcakeMapper.getAllBottoms(connectionPool);
-                ctx.attribute("topList", topList);
-                ctx.attribute("bottomList", bottomList);
-                ctx.render("index.html");
-
-
-            } catch (NumberFormatException e) {
-                ctx.attribute("message", e.getMessage());
-                ctx.render("index.html");
             }
 
+            cart.add(top, bottom, quantity);
+            ctx.sessionAttribute("cart", cart);
+            List<Top> topList = CupcakeMapper.getAllTops(connectionPool);
+            List<Bottom> bottomList = CupcakeMapper.getAllBottoms(connectionPool);
+            ctx.attribute("topList", topList);
+            ctx.attribute("bottomList", bottomList);
+            ctx.render("index.html");
+
+        } catch (NumberFormatException e) {
+            ctx.attribute("message", e.getMessage());
+            ctx.render("index.html");
         }
     }
+
+    private static void index(Context ctx, ConnectionPool connectionPool) {
+        User user = ctx.sessionAttribute("currentUser");
+        Cart cart = ctx.sessionAttribute("cart");
+        if (cart == null) {
+            cart = new Cart();
+            ctx.sessionAttribute("cart", cart);
+        }
+        try {
+            List<Top> topList = CupcakeMapper.getAllTops(connectionPool);
+            List<Bottom> bottomList = CupcakeMapper.getAllBottoms(connectionPool);
+            ctx.attribute("topList", topList);
+            ctx.attribute("bottomList", bottomList);
+            ctx.render("index.html");
+
+
+        } catch (NumberFormatException e) {
+            ctx.attribute("message", e.getMessage());
+            ctx.render("index.html");
+        }
+
+    }
+}
 
 
 

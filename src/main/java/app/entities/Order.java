@@ -1,8 +1,9 @@
 package app.entities;
+
 public class Order {
-private int orderId;
-private int userId;
-private double totalPrice;
+    private int orderId;
+    private int userId;
+    private double totalPrice;
 
     public Order(int orderId, int userId, double totalPrice) {
         this.orderId = orderId;

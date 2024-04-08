@@ -50,7 +50,7 @@
                     <option>Vælg en topping</option>
                     <option th:each="top: ${topList}"
                             th:value="${top.id}"
-                            th:text="${top.name +' (' + top.price + ')'}"
+                            th:text="${top.name +' (' + top.price + ' kr.)'}"
                             value="1">Name
                     </option>
                 </select>
