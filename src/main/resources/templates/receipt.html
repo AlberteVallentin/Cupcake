@@ -24,7 +24,7 @@
             <a href="kurv.html" th:href="@{/cart}">
                 <img src="../public/images/cart.png" th:src="@{/images/cart.png}" />
             </a>
-            <span class="cart-count" th:if="${session.cart.getTotalQuantity() > 0}" th:text="${session.cart.getTotalQuantity()}"></span>
+
         </li>
 
     </ul>
@@ -32,12 +32,8 @@
 <body>
 <div class="container">
     <h2>Ordren er bestilt</h2>
-    <div class="container-ordre">
-        <form method="post">
-
-
-        </form>
-
+    <div th:if="${session.currentUser != null}">
+        <div class="user-email" th:text="${session.currentUser.name}"></div>
     </div>
 </div>
 </body>
