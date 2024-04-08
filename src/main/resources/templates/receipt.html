@@ -32,8 +32,16 @@
 <body>
 <div class="container">
     <h2>Ordren er bestilt</h2>
+
     <div th:if="${session.currentUser != null}">
-        <div class="user-email" th:text="${session.currentUser.name}"></div>
+
+      <div class="ordre-name" th:text="${session.currentUser.name}">
+          <p>Du kan hente din ordre om en time.  </p>
+      </div>
+
+
+
+
     </div>
 </div>
 </body>
