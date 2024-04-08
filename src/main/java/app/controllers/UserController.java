@@ -1,5 +1,6 @@
 package app.controllers;
 
+import app.entities.Cart;
 import app.entities.User;
 import app.exceptions.DatabaseException;
 import app.persistence.ConnectionPool;
@@ -22,7 +23,7 @@ public class UserController {
         app.get("/loginpage", ctx -> loginPage(ctx, connectionPool));
         app.get("/adminpage", ctx -> adminPage(ctx, connectionPool));
 
-        app.post("/addMoney", ctx -> addMoney(ctx,connectionPool));
+        app.post("/addMoney", ctx -> addMoney(ctx, connectionPool));
 
     }
 
@@ -91,13 +92,20 @@ public class UserController {
         try {
             User user = UserMapper.adminLoginCheck(email, password, connectionPool);
             ctx.sessionAttribute("currentUser", user);
-            // Hvis ja, send videre til admin page
+            // Hvis ja, og brugeren er admin, send videre til admin page
             if (user.getAdmin()) {
                 List<User> userList = CupcakeMapper.getAllUsers(connectionPool);
                 ctx.attribute("userList", userList);
                 ctx.render("adminpage.html");
             } else {
-                ctx.render("kurv.html");
+                // Tjek om brugeren har en kurv og den ikke er tom
+                Cart cart = ctx.sessionAttribute("cart");
+                if (cart != null && !cart.getCartLines().isEmpty()) {
+                    ctx.render("kurv.html");
+                } else {
+                    // Hvis der ikke er noget i kurven, send til forsiden
+                    ctx.render("index.html");
+                }
             }
         } catch (DatabaseException e) {
             // Hvis nej, send tilbage til login side med fejl besked

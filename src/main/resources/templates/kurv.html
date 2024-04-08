@@ -58,17 +58,24 @@
                 <td th:text="${session.cart.getTotal()}"></td>
             </tr>
         </table>
-            <div th:unless="${session.currentUser != null}">
+            <div class="button-container" th:unless="${session.currentUser != null}">
                     <button class="btn btn-ok" type="submit" formaction="/loginpage"> Login før du køber</button>
             </div>
 
-            <div th:if="${session.currentUser != null and !(session.cart == null or session.cart.cartLines.isEmpty())}">
+            <div class="button-container" th:if="${session.currentUser != null and !(session.cart == null or session.cart.cartLines.isEmpty())}">
                 <button class="btn btn-ok" type="submit" formaction="/receipt"> Køb nu</button>
             </div>
 
-            <div th:if="${session.currentUser != null and (session.cart == null or session.cart.cartLines.isEmpty())}">
+            <div class="button-container" th:if="${session.currentUser != null and !(session.cart == null or session.cart.cartLines.isEmpty())}">
+                <button class="btn btn-ok" type="submit" formaction="/"> Vælg flere cupcakes</button>
+            </div>
+
+            <div class="button-container" th:if="${session.currentUser != null and (session.cart == null or session.cart.cartLines.isEmpty())}">
                 <button class="btn btn-ok" type="submit" formaction="/"> Vælg nogle cupcakes før du kan bestille</button>
             </div>
+
+
+
 
             <div th:if="${message != null}" class="error-message">
                 <p th:text="${message}"></p>

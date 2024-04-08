@@ -32,7 +32,7 @@ public class OrderController {
 
                 // Check if user has enough balance to make a purchase
                 if (user.getBalance() < totalPrice) {
-                    ctx.attribute("message", "Du har ikke nok penge på din konto til at gennemføre købet.");
+                    ctx.attribute("message", "Du har ikke nok penge på din konto til at gennemføre købet. Din konto har " + user.getBalance() + " kr.");
                     ctx.render("kurv.html");
                     return;
                 }
@@ -58,10 +58,6 @@ public class OrderController {
                 ctx.attribute("message", e.getMessage());
                 ctx.render("kurv.html");
             }
-        } else {
-            // Handle the case where there cart is null
-            ctx.attribute("message", "Du skal have varer i din kurv for at se en kvittering.");
-            ctx.render("kurv.html");
         }
     }
 

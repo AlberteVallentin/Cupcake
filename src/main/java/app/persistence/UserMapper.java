@@ -75,9 +75,6 @@ public class UserMapper {
             if (rs.next()) {
                 double currentBalance = rs.getInt("balance");
                 double newBalance = currentBalance - totalPrice;
-                if (newBalance < 0) {
-                    throw new DatabaseException("Der er ikke nok penge på kontoen til at fuldføre transaktionen.");
-                }
 
                 String updatesql = "update users set balance=? where user_id=?";
                 PreparedStatement ps02 = connection.prepareStatement(updatesql);
@@ -89,11 +86,9 @@ public class UserMapper {
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        } catch (DatabaseException e) {
-            throw new RuntimeException(e);
+
+
         }
-
-
     }
 
     public static void depositToBalance(int userId, double depositAmount, ConnectionPool connectionPool) {

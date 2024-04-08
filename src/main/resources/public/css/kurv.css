@@ -57,3 +57,7 @@
     text-align: center;
     align-items: center;
 }
+
+.button-container {
+    margin-bottom: 20px;
+}
