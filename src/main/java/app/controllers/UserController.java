@@ -104,7 +104,7 @@ public class UserController {
                     ctx.render("kurv.html");
                 } else {
                     // Hvis der ikke er noget i kurven, send til forsiden
-                    ctx.render("index.html");
+                    ctx.redirect("/");
                 }
             }
         } catch (DatabaseException e) {
