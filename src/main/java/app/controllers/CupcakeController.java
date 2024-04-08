@@ -20,6 +20,7 @@ public class CupcakeController {
         app.post("/addtocart", ctx -> addToCart(ctx, connectionPool));
         app.get("/cart", ctx -> cart(ctx, connectionPool));
         app.post("/receipt", ctx -> showReceipt(ctx, connectionPool));
+        app.get("/receipt", ctx -> cart(ctx, connectionPool));
 
         //  app.post("deleteorder", ctx -> deleteorder(ctx,false,connectionPool));
 

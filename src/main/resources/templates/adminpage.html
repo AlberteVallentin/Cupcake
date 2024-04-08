@@ -46,7 +46,7 @@
                     <option>Vælg kunde</option>
                     <option th:each="user: ${userList}"
                             th:value="${user.userId}"
-                            th:text="${user.email +' (' + user.balance + ')'}"
+                            th:text="${user.email +' (' + user.balance + ' kr.)'}"
                             value="1">Email
                     </option>
                 </select>

@@ -46,21 +46,21 @@
     <form method="post">
         <div class="dropdown-container">
             <div class="dropdown">
-                <select name="top" th:required="true">
+                <select name="top" >
                     <option>Vælg en topping</option>
                     <option th:each="top: ${topList}"
                             th:value="${top.id}"
-                            th:text="${top.name +' (' + top.price + ')'}"
+                            th:text="${top.name +' (' + top.price + ' kr.)'}"
                             value="1">Name
                     </option>
                 </select>
             </div>
             <div class="dropdown">
-                <select name="bottom" th:required="true">
+                <select name="bottom">
                     <option>Vælg en bund</option>
                     <option th:each="bottom: ${bottomList}"
                             th:value="${bottom.id}"
-                            th:text="${bottom.name +' (' + bottom.price + ')'}"
+                            th:text="${bottom.name +' (' + bottom.price + ' kr.)'}"
                             value="1">Name
                     </option>
                 </select>
@@ -68,7 +68,7 @@
         </div>
         <div class="dropdown-container">
             <div class="dropdown">
-                <input placeholder="Indtast antallet af cupcakes" type="number" name="quantity" min="0" max="100000" th:required="true"/>
+                <input placeholder="Indtast antallet af cupcakes" type="number" name="quantity" min="0" max="100000"/>
             </div>
             <div class="dropdown">
                 <button type="submit" formaction="/addtocart">Læg i kurv</button>
