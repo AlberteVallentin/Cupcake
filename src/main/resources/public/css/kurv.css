@@ -18,7 +18,7 @@
     border-collapse: collapse;
     border: 1px solid silver;
     margin-bottom: 20px;
-    color: #777; /* Grey color */
+
 }
 
 .container-ordre td {
@@ -42,10 +42,12 @@
 
 }
 .ordre-name{
-    color: #777; /* Grey color */
-    font-size: 20px; /* Adjust font size as needed */
-    font-weight: bold; /* Make the word bold */
-    text-transform: uppercase; /* Convert the word to uppercase */
-    letter-spacing: 1px; /* Add spacing between letters for better readability */
-    /* Add any additional styles to make it look awesome */
+    text-align: center;
+    color: #777;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
 }
