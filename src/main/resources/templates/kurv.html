@@ -48,7 +48,7 @@
                 <td th:text="${cartline.top.name}"></td>
                 <td th:text="${cartline.bottom.name}"></td>
                 <td th:text="${cartline.getTotal()}"></td>
-                <td><button formaction="/deletecartline" type="submit" name="cartIndex" th:value="${iStatus.index}">Delete</button></td>
+                <td><button class="delete-cartline" formaction="/deletecartline" type="submit" name="cartIndex" th:value="${iStatus.index}">Delete</button></td>
 
              <!--   <td>
                     <button type="submit" name="orderId" th:value="${order.orderId}">Delete</button>

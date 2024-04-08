@@ -27,3 +27,16 @@
 .totalprice {
     border-top: 1px solid black;
 }
+
+.delete-cartline{
+    width: 100%;
+    padding: 15px;
+    border-radius: 25px;
+    border: none;
+    background-color: var(--purple-color);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+}
