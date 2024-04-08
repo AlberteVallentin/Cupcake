@@ -17,6 +17,7 @@ public class CupcakeController {
 
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
         app.get("/", ctx -> index(ctx, connectionPool));
+        app.post("/", ctx -> index(ctx, connectionPool));
         app.post("/addtocart", ctx -> addToCart(ctx, connectionPool));
     }
 

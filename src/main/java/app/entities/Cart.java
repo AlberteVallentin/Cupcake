@@ -31,7 +31,6 @@ public class Cart {
 
         return sum;
     }
-
     public int getTotalQuantity() {
         int totalQuantity = 0;
         for (CartLine cartLine : cartLines) {
@@ -41,7 +40,7 @@ public class Cart {
     }
 
     public int cartCount() {
-
         return cartLines.size();
     }
+
 }

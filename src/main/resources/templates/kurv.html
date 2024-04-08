@@ -62,8 +62,16 @@
                     <button class="btn btn-ok" type="submit" formaction="/loginpage"> Login før du køber</button>
             </div>
 
-            <div th:unless="${session.currentUser == null}">
+            <div th:if="${session.currentUser != null and !(session.cart == null or session.cart.cartLines.isEmpty())}">
                 <button class="btn btn-ok" type="submit" formaction="/receipt"> Køb nu</button>
+            </div>
+
+            <div th:if="${session.currentUser != null and (session.cart == null or session.cart.cartLines.isEmpty())}">
+                <button class="btn btn-ok" type="submit" formaction="/"> Vælg nogle cupcakes før du kan bestille</button>
+            </div>
+
+            <div th:if="${message != null}" class="error-message">
+                <p th:text="${message}"></p>
             </div>
 
         </form>

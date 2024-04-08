@@ -19,8 +19,6 @@ public class OrderController {
         app.post("/deletecartline", ctx -> deletecartline(ctx, connectionPool));
         app.get("/receipt", ctx -> cart(ctx, connectionPool));
 
-
-
     }
 
     private static void showReceipt(Context ctx, ConnectionPool connectionPool) {
@@ -32,6 +30,13 @@ public class OrderController {
                 // Calculate total price of the cart
                 double totalPrice = cart.getTotal();
 
+                // Check if user has enough balance to make a purchase
+                if (user.getBalance() < totalPrice) {
+                    ctx.attribute("message", "Du har ikke nok penge på din konto til at gennemføre købet.");
+                    ctx.render("kurv.html");
+                    return;
+                }
+
                 // Insert order into the orders table
                 int orderId = OrderMapper.insertOrder(user.getUserId(), totalPrice, connectionPool);
 
@@ -40,20 +45,24 @@ public class OrderController {
                     OrderMapper.insertOrderLine(orderId, item.getTop().getId(), item.getBottom().getId(), item.getQuantity(), connectionPool);
                 }
 
-                //Withdraw from balance
+                // Withdraw from user's balance
                 UserMapper.withdrawFromBalance(user, totalPrice, connectionPool);
-            } catch (DatabaseException e) {
+
+                // Clear the cart after saving the items
+                ctx.sessionAttribute("cart", null);
+
+                // Render the receipt template
+                ctx.render("receipt.html");
+
+            } catch (RuntimeException | DatabaseException e) {
                 ctx.attribute("message", e.getMessage());
-                ctx.render("index.html");
-                return;
+                ctx.render("kurv.html");
             }
+        } else {
+            // Handle the case where there cart is null
+            ctx.attribute("message", "Du skal have varer i din kurv for at se en kvittering.");
+            ctx.render("kurv.html");
         }
-
-        // Clear the cart after saving the items
-        ctx.sessionAttribute("cart", null);
-
-        // Render the receipt template
-        ctx.render("receipt.html");
     }
 
 

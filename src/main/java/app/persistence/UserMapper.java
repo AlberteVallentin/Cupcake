@@ -75,10 +75,10 @@ public class UserMapper {
             if (rs.next()) {
                 double currentBalance = rs.getInt("balance");
                 double newBalance = currentBalance - totalPrice;
-                if (newBalance < totalPrice) {
-                    System.out.println("Insufficient funds!");
-
+                if (newBalance < 0) {
+                    throw new DatabaseException("Der er ikke nok penge på kontoen til at fuldføre transaktionen.");
                 }
+
                 String updatesql = "update users set balance=? where user_id=?";
                 PreparedStatement ps02 = connection.prepareStatement(updatesql);
                 ps02.setDouble(1, newBalance);
@@ -88,6 +88,8 @@ public class UserMapper {
             }
 
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (DatabaseException e) {
             throw new RuntimeException(e);
         }
 
