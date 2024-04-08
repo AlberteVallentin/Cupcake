@@ -43,11 +43,12 @@
                 <th>Pris</th>
 
             </tr>
-            <tr th:each="cartline : ${session.cart.cartlines}">
+            <tr th:each="cartline, iStatus : ${session.cart.cartlines}">
                 <td th:text="${cartline.quantity}"></td>
                 <td th:text="${cartline.top.name}"></td>
                 <td th:text="${cartline.bottom.name}"></td>
                 <td th:text="${cartline.getTotal()}"></td>
+                <td><button formaction="/deletecartline" type="submit" name="cartIndex" th:value="${iStatus.index}">Delete</button></td>
 
              <!--   <td>
                     <button type="submit" name="orderId" th:value="${order.orderId}">Delete</button>

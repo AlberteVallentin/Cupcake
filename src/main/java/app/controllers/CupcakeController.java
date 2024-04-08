@@ -20,8 +20,7 @@ public class CupcakeController {
         app.post("/addtocart", ctx -> addToCart(ctx, connectionPool));
         app.get("/cart", ctx -> cart(ctx, connectionPool));
         app.post("/receipt", ctx -> showReceipt(ctx, connectionPool));
-
-        //  app.post("deleteorder", ctx -> deleteorder(ctx,false,connectionPool));
+        app.post("/deletecartline", ctx -> deletecartline(ctx, connectionPool));
 
     }
 
@@ -61,25 +60,21 @@ public class CupcakeController {
 
 
 
-/*
-    private static void deleteorder(Context ctx, boolean b, ConnectionPool connectionPool) {
+
+    private static void deletecartline(Context ctx, ConnectionPool connectionPool) {
 
         User user = ctx.sessionAttribute("currentUser");
         try {
 
-            int taskId = Integer.parseInt(ctx.formParam("taskId"));
-            CupcakeMapper.delete(taskId,connectionPool);
-            List<Order> orderlist = CupcakeMapper.getAllOrdersPerUser(user.getUserId(), connectionPool);
-            ctx.attribute("orderlist", orderlist);
+            int cartIndex = Integer.parseInt(ctx.formParam("cartIndex"));
+            Cart cart = ctx.sessionAttribute("cart");
+            cart.getCartLines().remove(cartIndex);
+            ctx.sessionAttribute("cart", cart);
             ctx.render("kurv.html");
-
-        } catch (DatabaseException | NumberFormatException e) {
-            ctx.attribute("message", e.getMessage());
-            ctx.render("index.html");
-        }
+        } catch (NumberFormatException e) {}
     }
 
- */
+
 
     private static void cart(Context ctx, ConnectionPool connectionPool) {
         ctx.render("kurv.html");

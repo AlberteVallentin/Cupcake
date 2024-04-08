@@ -202,8 +202,6 @@ public class CupcakeMapper {
 
     }
 
-
-     /*
     public static void delete(int orderId, ConnectionPool connectionPool) throws DatabaseException
     {
         String sql = "delete from orders where order_id = ?";
@@ -227,6 +225,7 @@ public class CupcakeMapper {
     }
 
 
+    /*
     public static List<Order> getAllOrdersPerUser(int userId, ConnectionPool connectionPool)throws DatabaseException{
 
         List<Order> orderList = new ArrayList<>();
