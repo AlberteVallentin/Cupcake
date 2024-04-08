@@ -61,5 +61,69 @@ public class UserMapper {
             throw new DatabaseException(msg, e.getMessage());
         }
     }
+    public static void withdrawFromBalance(User user, double totalPrice, ConnectionPool connectionPool) {
+
+        String sql = "SELECT * from users where user_id=?";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql);
+        ) {
+            ps.setInt(1, user.getUserId());
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                double currentBalance = rs.getInt("balance");
+                double newBalance = currentBalance - totalPrice;
+                if (newBalance < totalPrice) {
+                    System.out.println("Insufficient funds!");
+
+                }
+                String updatesql = "update users set balance=? where user_id=?";
+                PreparedStatement ps02 = connection.prepareStatement(updatesql);
+                ps02.setDouble(1, newBalance);
+                ps02.setInt(2, user.getUserId());
+                ps02.executeUpdate();
+
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+    public static void depositToBalance(int userId, double depositAmount, ConnectionPool connectionPool) {
+
+        String sql = "SELECT * from users where user_id=?";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql);
+        ) {
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                double currentBalance = rs.getInt("balance");
+                double newBalance = currentBalance + depositAmount;
+                if (0 > depositAmount) {
+                    System.out.println("Du kan ikke trække penge fra kunden");
+
+                }
+                String updatesql = "update users set balance=? where user_id=?";
+                PreparedStatement ps02 = connection.prepareStatement(updatesql);
+                ps02.setDouble(1, newBalance);
+                ps02.setInt(2, userId);
+                ps02.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
 
 }

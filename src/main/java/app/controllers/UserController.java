@@ -33,7 +33,7 @@ public class UserController {
 
         double amount = Double.parseDouble(ctx.formParam("amount"));
 
-        CupcakeMapper.depositToBalance(userId, amount, connectionPool);
+        UserMapper.depositToBalance(userId, amount, connectionPool);
 
         userList = CupcakeMapper.getAllUsers(connectionPool);
 
