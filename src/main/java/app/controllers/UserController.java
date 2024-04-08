@@ -18,6 +18,7 @@ public class UserController {
         app.get("logout", ctx -> logout(ctx));
 
         app.post("/login", ctx -> login(ctx, connectionPool));
+        app.post("/loginpage", ctx -> loginPage(ctx, connectionPool));
         app.get("/loginpage", ctx -> loginPage(ctx, connectionPool));
         app.get("/adminpage", ctx -> adminPage(ctx, connectionPool));
 
