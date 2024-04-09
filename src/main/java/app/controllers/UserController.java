@@ -47,6 +47,11 @@ public class UserController {
     private static void adminPage(Context ctx, ConnectionPool connectionPool) {
         List<User> userList = CupcakeMapper.getAllUsers(connectionPool);
         ctx.attribute("userList", userList);
+
+        if (ctx.sessionAttribute("cart") == null) {
+            ctx.sessionAttribute("cart", new Cart());
+        }
+
         ctx.render("adminpage.html");
     }
 
