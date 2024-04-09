@@ -18,6 +18,7 @@ public class OrderController {
         app.post("/receipt", ctx -> showReceipt(ctx, connectionPool));
         app.post("/deletecartline", ctx -> deletecartline(ctx, connectionPool));
         app.get("/receipt", ctx -> cart(ctx, connectionPool));
+        //hej
 
     }
 
