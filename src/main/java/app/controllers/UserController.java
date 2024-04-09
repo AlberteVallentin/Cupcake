@@ -21,6 +21,7 @@ public class UserController {
         app.post("/login", ctx -> login(ctx, connectionPool));
         app.post("/loginpage", ctx -> loginPage(ctx, connectionPool));
         app.get("/loginpage", ctx -> loginPage(ctx, connectionPool));
+        app.post("/adminpage", ctx -> loginPage(ctx, connectionPool));
         app.get("/adminpage", ctx -> adminPage(ctx, connectionPool));
 
         app.post("/addMoney", ctx -> addMoney(ctx, connectionPool));
@@ -44,6 +45,8 @@ public class UserController {
     }
 
     private static void adminPage(Context ctx, ConnectionPool connectionPool) {
+        List<User> userList = CupcakeMapper.getAllUsers(connectionPool);
+        ctx.attribute("userList", userList);
         ctx.render("adminpage.html");
     }
 
